@@ -1,0 +1,3 @@
+# Schedule
+
+Wait how is this any different from the syllabus lol...

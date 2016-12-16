@@ -1,1 +1,0 @@
-Course Website for CIS700 Procedural Graphics at the University of Pennsylvania
