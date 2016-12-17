@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+  </head>
+  <body>
+    <div id="root">
+      <div>
+        <nav class="navbar navbar-inverse">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>   <span class="icon-bar"></span> </button>
+              <a class="navbar-brand" href="/">CIS700 Procedural Graphics</a> 
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li> <a href="/syllabus">Syllabus</a>  </li>
+                <li> <a href="/schedule">Schedule</a>  </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments  <span class="caret"></span>  </a> 
+                  <ul class="dropdown-menu">
+                    <li> <a href="/assignments/hw1-noise">HW1: Noise</a>  </li>
+                    <li> <a href="/assignments/hw2">HW2: </a>  </li>
+                    <li> <a href="/assignments/hw3">HW3: </a>  </li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources  <span class="caret"></span>  </a> 
+                  <ul class="dropdown-menu">
+                    <li> <a href="/resources/javascript-basics">Javascript Basics</a>  </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main class="container">
+          <div class="markdown-page">
+            <p>
+              <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/darcula.min.css">
+            </p>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+            <script>
+              hljs.initHighlightingOnLoad();
+            </script>
+            <h1 id="objects">Objects</h1>
+            <p>In Javascript, everything (as long as it&#39;s not a primitive like a string or a number), is an Object. And by that, I don&#39;t mean typical objects in object-oriented languages. Everything is a set of key-value pairs which we typically
+              call &quot;properties&quot;. For example:</p>
+            <pre><code>var a = {};                 // `a` is an empty object
+var b = {                   // `b` is an object with two properties
+  value: 2,                 // `b.value` points to a number
+  foo: &quot;bar&quot;                // `b.foo` points to a string
+}
+</code></pre>
+            <p>We can access any property using <code>object.property</code> syntax, or by fetching the property by name: <code>object[&quot;property&quot;]</code>.</p>
+            <p>We can modify properties at any time and even add new properties to existing objects.</p>
+            <pre><code>b[&quot;name&quot;] = &quot;Austin&quot;;
+b.value -= 1;
+console.log(b);           // Object { value: 1, foo: &quot;bar&quot;, name: &quot;Austin&quot; }
+</code></pre>
+            <p>Objects properties can point to functions and functions themselves are even objects.</p>
+            <pre><code>b.sayHello = function() {
+  console.log(&quot;Hello, my name is&quot;, b.name);
+}
+b.sayHello.help = &quot;This prints the name property of the caller&quot;
+</code></pre>
+            <p>And yes, Objects can point to themselves.</p>
+            <pre><code>b.b = b
+b.b.b.b.b.b.b.sayHello()    // &quot;Hello my name is Austin&quot;
+</code></pre>
+            <h1 id="-classes-">&quot;Classes&quot;</h1>
+            <p>Javascript is NOT an object-oriented language so there are no real classes, but we often like to have object-like behavior. Here are three ways to accomplish that. Personally, I like the use of closures, but if you&#39;re new to Javascript,
+              using ES6 classes will probably be the easiest transition. The second method is unfortunately used very often and can lead to many annoying bugs if you&#39;re not careful.</p>
+            <h2 id="es6-classes">ES6 Classes</h2>
+            <pre><code class="lang-javascript">class Person {
+  constructor(name, phonenumber) {
+    // if we want to access these later, we need to bind them to &#39;this&#39;
+    this.createdAt = new Date();        // impossible to be &quot;private&quot;
+    this.name = name;
+    this.phonenumber = phonenumber;
+  }
+  getName() {
+    return name;
+  }
+  setName(newName) {
+    this.name = newName;
+  }
+}
+// Usage:
+var person = new Person(&quot;Austin&quot;, &quot;555-555-5555&quot;);
+person.setName(&quot;Austin Eng&quot;)
+console.log(person.getName())         // Austin Eng
+person.name = &quot;Austin&quot;                // object properties are publically accessible
+console.log(person.getName())         // Austin
+</code></pre>
+            <h2 id="-this-syntax">&quot;this&quot; Syntax</h2>
+            <pre><code class="lang-javascript">var Person = function(name, phonenumber) {
+  var createdAt = new Date();          // will not be directly accessible because it&#39;s not bound to &quot;this&quot;
+  this.phonenumber = phonenumber;
+  this.getName = function() {          // name is protected by getters and setters
+    return name;
+  }
+  this.setName = function(newName) {
+    name = newName;
+  }
+}
+// Usage:
+var person = new Person(&quot;Austin&quot;, &quot;555-555-5555&quot;);      // Note: You MUST use &quot;new&quot;. If you don&#39;t, &quot;this&quot; will be undefined
+console.log(person.getName())
+typeof person.name === &quot;undefined&quot;                      // this property is hidden
+console.log(person.phonenumber)                         // this one is not
+</code></pre>
+            <h2 id="closures">Closures</h2>
+            <pre><code class="lang-javascript">var Person = function(name, phonenumber) {
+  var person = {
+    phonenumber: phonenumber
+  };
+  var createdAt = new Date();         // will not be directly accessible because it&#39;s not bound to &quot;person&quot;
+  person.getName = function() {       // name is protected by getters and setters
+    return name;
+  }
+  person.setName = function(newName) {
+    name = newName;
+  }
+  return person;
+}
+</code></pre>
+            <h1 id="javascript-modules">Javascript Modules</h1>
+            <p>One of the nicer and newer features of Javascript is that we can have modules and separate our code into different files. Yay organized code! Anything prefaced by <code>export</code> will be exported from the module so that it can be accessed
+              elsewhere like so: </p>
+            <pre><code class="lang-javascript">import {thing1, thing2} from &#39;./path/to/Module.js&#39;
+</code></pre>
+            <p>Using <code>export default</code> will be the export if curly braces are not used in the import.</p>
+            <pre><code class="lang-javascript">import Module from &#39;./path/to/Module.js
+</code></pre>
+            <p>Let&#39;s just jump straight into an example.</p>
+            <pre><code class="lang-javascript">// MathLib.js
+export const PI = 3.14159265;
+export function toRadians(degrees) {
+  return degrees * PI / 180;
+}
+export function toDegrees(radians) {
+  return radians * 180 / PI;
+}
+</code></pre>
+            <pre><code class="lang-javascript">// Person.js
+export default class Person {
+  constructor(name) {
+    this.name = name;
+  }
+  sayHello() {
+    console.log(&quot;Hello my name is&quot;, this.name);
+  }
+}
+</code></pre>
+            <pre><code class="lang-javascript">// main.js
+import {PI} from &#39;./MathLib.js&#39;
+import Person from &#39;./Person.js&#39;
+console.log(&quot;The value of pi is:&quot;, PI);
+var austin = new Person(&quot;Austin&quot;);
+austin.sayHello();
+</code></pre>
+            <h1 id="callback-functions">Callback Functions</h1>
+            <p>Callback functions are used very often in Javascript, often when dealing with events. Because Javascript code in a browser is <strong>single threaded</strong>, but we want it to execute as fast as possible, modern Javascript engines are <strong>asynchronous</strong> .
+              As a result, we often register &quot;callback functions&quot;. These are functions that are called when the result of some other operation has completed. This is very often used for handling events.</p>
+            <p>Here&#39;s a simple example</p>
+            <pre><code class="lang-javascript">function thing() {
+  console.log(&quot;second&quot;);
+}
+window.setTimeout(thing, 1000);
+console.log(&quot;first&quot;);
+</code></pre>
+            <p>This code will print &quot;first&quot; and then print &quot;second&quot; one second later. <code>setTimeout</code> takes in a function and the number of milliseconds to wait before calling that function again. Here&#39;s a much more common
+              way to write the same code.</p>
+            <pre><code class="lang-javascript">window.setTimeout(function() {
+  console.log(&quot;second&quot;)
+});
+console.log(&quot;first&quot;);
+</code></pre>
+            <p>Note that the function here is not named. This is what we call an &quot;anonymous&quot; function. If that&#39;s confusing, here&#39;s something else we often use for animation loops.</p>
+            <pre><code class="lang-javascript">(function tick() {
+  // draw stuff
+  window.requestAnimationFrame(tick);
+})()
+</code></pre>
+            <p>Here, we&#39;re creating a function called tick which will pass itself as a callback to <code>requestAnimationFrame</code>. This, whenever the browser is ready to draw, will call <code>tick</code> again. We wrap this all in parentheses and
+              put <code>()</code> afterwards to call <code>tick()</code> for the first time.</p>
+            <p>Here&#39;s another example of callback functions for event handling</p>
+            <pre><code class="lang-javascript">window.addEventListener(&#39;click&#39;, function(event) {
+  console.log(&quot;You clicked:&quot;, event.screenX, event.screenY);
+});
+</code></pre>
+            <p>Here, <code>addEventListener</code> takes as parameters the name of the event to listen for and the function to execute when that event happens.</p>
+          </div>
+        </main>
+      </div>
+    </div>
+    <body>
+</html>

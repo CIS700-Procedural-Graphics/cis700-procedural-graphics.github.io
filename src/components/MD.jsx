@@ -6,7 +6,7 @@ class MD extends Component {
   render() {
     return (
       <Template>
-        <div dangerouslySetInnerHTML={{__html: this.props.md}}></div>
+        <div className="markdown-page" dangerouslySetInnerHTML={{__html: this.props.md}}></div>
       </Template>
     )
   }
