@@ -13,7 +13,7 @@ var routes = (
       <Route path="javascript-basics" component={() => (<MD md={require("./resources/basics.md")} />)} />
     </Route> 
     <Route path="/assignments">
-      <Route path="hw1-noise" component={() => (<MD md={require("./assignments/HW1.md")} />)} />
+      <Route path="hw1-noise" component={() => (<MD md={require("../../hw/hw01/base/README.md")} />)} />
     </Route>
   </Router>
 )
