@@ -1,12 +1,11 @@
 
 import React from 'react'
 import {Router, Route, browserHistory} from 'react-router'
-import Index from './components/Index'
 import MD from './components/MD'
 
 var routes = (
   <Router history={browserHistory}>
-    <Route path="/" component={Index}></Route>
+    <Route path="/" component={() => (<MD md={require("./README.md")} />)}></Route>
     <Route path="/schedule" component={() => (<MD md={require("./SCHEDULE.md")} />)} />
     <Route path="/syllabus" component={() => (<MD md={require("./SYLLABUS.md")} />)} />
     <Route path="/resources">

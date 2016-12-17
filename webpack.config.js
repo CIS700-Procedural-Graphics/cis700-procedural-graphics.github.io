@@ -22,15 +22,11 @@ module.exports = {
           presets: ['es2015', 'react']
         }
       }, 
-      // {
-      //   test: /\.scss$/,
-      //   loaders: ["style-loader", "css-loader", "sass-loader"]
-      // },
       {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract(
-            'style', // backup loader when not building .css file
-            'css!sass' // loaders to preprocess CSS
+            'style',
+            'css!sass'
         )
       },
       { 
