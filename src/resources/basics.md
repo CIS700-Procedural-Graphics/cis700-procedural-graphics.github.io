@@ -130,7 +130,7 @@ import {thing1, thing2} from './path/to/Module.js'
 Using `export default` will be the export if curly braces are not used in the import.
 
 ```javascript
-import Module from './path/to/Module.js
+import Module from './path/to/Module.js'
 ```
 
 Let's just jump straight into an example.
