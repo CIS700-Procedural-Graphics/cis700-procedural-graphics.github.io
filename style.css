@@ -17,5 +17,15 @@ code {
 h1 {
   margin-top: 30px; }
 
+h2 {
+  margin-top: 40px; }
+
 a {
   color: #6896ba; }
+
+.navbar-inverse {
+  background-color: #000; }
+  .navbar-inverse .navbar-brand {
+    color: #eee; }
+  .navbar-inverse .navbar-nav > li > a {
+    color: #ffc029; }

@@ -39,13 +39,129 @@
         </nav>
         <main class="container">
           <div class="markdown-page">
-            <h1 id="syllabus">Syllabus</h1>
-            <h2 id="week-1">Week 1</h2>
-            <p>The quick brown fox jumped over the lazy dog</p>
-            <h2 id="week-2">Week 2</h2>
-            <p>The quick brown fox jumped over the lazy dog</p>
-            <h2 id="week-3">Week 3</h2>
-            <p>The quick brown fox jumped over the lazy dog</p>
+            <h1 id="special-topics-course-cis-700-procedural-graphics">Special Topics Course CIS 700 Procedural Graphics</h1>
+            <h2 id="week-1-noise">Week 1: Noise</h2>
+            <p>Introduction to procedural graphics and Canvas with Javascript. Pseudo-random noise techniques. Perlin Noise, Simplex Noise.</p>
+            <p><strong>Reading:</strong> </p>
+            <ul>
+              <li> <a href="http://dl.acm.org/citation.cfm?id=325247&amp;CFID=853506620&amp;CFTOKEN=59155680">Ken Perlin, An image synthesizer, ACM SIGGRAPH Computer Graphics, v.19 n.3, p.287-296, Jul. 1985;</a>  </li>
+              <li> <a href="http://mrl.nyu.edu/~perlin/paper445.pdf">Ken Perlin. 2002. Improving noise. ACM Trans. Graph. 21, 3 (July 2002), 681-682.</a>  </li>
+            </ul>
+            <p><strong>Assignment:</strong> </p>
+            <ul>
+              <li>Structured Noise: Using Javascript, generate 2D structured noise in a program written with Three.js.</li>
+            </ul>
+            <p><strong>Additional Reference:</strong> </p>
+            <ul>
+              <li> <a href="https://diglib.eg.org/handle/10.2312/egst.20101059.001-019">Lagae, A., Lefebvre, S., Cook, R., DeRose, T., Drettakis, G., Ebert, D., Lewis, J.P., Perlin, K., Zwicker, M., &quot;A Survey of Procedural Noise Functions,&quot; Computer Graphics Forum, 2010.</a>  </li>
+            </ul>
+            <h2 id="week-2-distribution-and-sampling">Week 2: Distribution and Sampling</h2>
+            <p>Working with workhorse growth functions. Creating distributions. Point-scattering. World-brush. Voronoi diagrams. Brief overview of procedural generation pipelines.</p>
+            <p><strong>Reading:</strong> </p>
+            <ul>
+              <li> <a href="http://dl.acm.org/citation.cfm?id=2766975">Arnaud Emilien , Ulysse Vimont , Marie-Paule Cani , Pierre Poulin , Bedrich Benes, WorldBrush: interactive example-based synthesis of procedural virtual worlds, ACM Transactions on Graphics (TOG), v.34 n.4, August 2015</a>  </li>
+            </ul>
+            <p><strong>Assignment:</strong> </p>
+            <ul>
+              <li>Realistic Feather Distribution: Procedurally create a model of a feathered wing, using distribution functions to place the feathers.</li>
+            </ul>
+            <h2 id="week-3-l-systems">Week 3: L-systems</h2>
+            <p>The basics of string replacement systems and designing and parsing simple grammars.</p>
+            <p><strong>Reading:</strong> </p>
+            <ul>
+              <li> <a href="http://dl.acm.org/citation.cfm?id=325245">Stephen Demko, Laurie Hodges, and Bruce Naylor. 1985. Construction of fractal objects with iterated function systems. In SIGGRAPH &#39;85</a>  </li>
+            </ul>
+            <p><strong>Assignment:</strong> </p>
+            <ul>
+              <li>Plant Generation: Use L-systems and random number generators to create a complex 3D plant model of your own design.</li>
+            </ul>
+            <p><strong>Additional Reference:</strong>  </p>
+            <ul>
+              <li> <a href="http://algorithmicbotany.org/papers/abop/abop-ch1.pdf">&quot;The Algorithmic Beauty of Plants&quot;, Przemyslaw Prusinkiewicz, Aristid Lindenmayer</a>  </li>
+            </ul>
+            <h2 id="week-4-extending-l-systems">Week 4: Extending L-systems</h2>
+            <p>Moving on from strings. Shape grammars and additions to L-systems</p>
+            <p><strong>Reading:</strong> </p>
+            <ul>
+              <li> <a href="http://dl.acm.org/citation.cfm?id=1141931">Pascal Muller , Peter Wonka , Simon Haegler , Andreas Ulmer , Luc Van Gool, Procedural modeling of buildings, ACM Transactions on Graphics (TOG), v.25 n.3, July 2006</a>  </li>
+            </ul>
+            <p><strong>Assignment</strong> </p>
+            <ul>
+              <li>Applying L-Systems to City Generation: Dynamically generate buildings and street layouts to create a 3D model of a city.</li>
+            </ul>
+            <h2 id="week-5-color">Week 5: Color</h2>
+            <p>Cell-shading, color compression, color space mapping.</p>
+            <p><strong>Reading:</strong> </p>
+            <ul>
+              <li> <a href="http://dl.acm.org/citation.cfm?id=2382384">T.-W. Chen, Y.-L. Chen, and S.-Y. Chien. Fast image segmentation based on k-means clustering with histograms in hsv color space. In Multimedia Signal Processing, 2008 IEEE 10th Workshop on, pages 322 –325, 2008.</a>  </li>
+            </ul>
+            <p><strong>Assignment:</strong> </p>
+            <ul>
+              <li>One-Color Challenge: Using each color in the RGB32 gamut exactly once, create a visualization of a common computer science algorithm of your choice.</li>
+            </ul>
+            <h2 id="week-6-implicit-surfaces">Week 6: Implicit Surfaces</h2>
+            <p>Procedural geometry synthesis equations and constructed solid geometry.</p>
+            <p><strong>Reading:</strong> </p>
+            <ul>
+              <li> <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/1982/07/p235-blinn.pdf">&quot;A Generalization of Algebraic Surface Drawing.&quot; ACM Transactions on Graphics, July 1982.</a>  </li>
+            </ul>
+            <p><strong>Assignment:</strong> </p>
+            <ul>
+              <li>Cloudy With a Chance of Metaballs: Create an animated implicit surface using oscillating signed distance fields.</li>
+            </ul>
+            <h2 id="week-7-procedural-textures">Week 7: Procedural Textures</h2>
+            <p>Revisiting and combining procedural concepts to create unique procedural textures.</p>
+            <p><strong>Assignment:</strong> </p>
+            <ul>
+              <li>Substance Designer or Houdini.</li>
+            </ul>
+            <h2 id="week-8-intro-to-dynamics">Week 8: Intro to Dynamics</h2>
+            <p>Overview of rigid body dynamics and cloth simulation.</p>
+            <p><strong>Reading:</strong> </p>
+            <ul>
+              <li> <a href="https://www.cs.cmu.edu/~baraff/papers/index.html">D. Baraff and A. Witkin. Dynamic simulation of non-penetrating flexible bodies. Computer Graphics 26(2): 303-308, 1992.</a>  </li>
+              <li> <a href="https://dl.acm.org/citation.cfm?id=2638480&amp;CFID=856519259&amp;CFTOKEN=62461367">J. Linford and T. Moh. Parallelized rigid body dynamics. ACM SE 2014</a>  </li>
+            </ul>
+            <p><strong>Assignment:</strong> </p>
+            <ul>
+              <li>The Art of Chaos: Using rigid body physics to distribute various objects, create a 3D work of art.</li>
+            </ul>
+            <h2 id="week-9-intro-to-crowd-simulation">Week 9: Intro to Crowd simulation</h2>
+            <p>The basics of autonomous agents. Collision avoidance approaches.</p>
+            <p><strong>Reading:</strong> </p>
+            <ul>
+              <li>
+                <p>
+                  <a href="http://dl.acm.org/citation.cfm?id=1272705">Pelechano, Nuria, Jan M. Allbeck, and Norman I. Badler. &quot;Controlling individual agents in high-density crowd simulation.&quot; Proceedings of the 2007 ACM SIGGRAPH/Eurographics symposium on Computer animation. Eurographics Association,
+                    2007;</a> 
+                </p>
+              </li>
+              <li>
+                <p>
+                  <a href="http://www.cs.toronto.edu/~dt/siggraph97-course/cwr87/">Reynolds, Craig W. &quot;Flocks, herds and schools: A distributed behavioral model.&quot; ACM SIGGRAPH computer graphics 21.4 (1987): 25-34.</a> 
+                </p>
+              </li>
+            </ul>
+            <p><strong>Assignment:</strong>  Agent Avoidance: Program basic agent AIs to avoid one another and obstacles on their way to various goals.</p>
+            <h2 id="week-10-behavioral-animation">Week 10: Behavioral Animation</h2>
+            <p>Injecting personality and purpose into autonomous agents.</p>
+            <p><strong>Reading:</strong> </p>
+            <ul>
+              <li> <a href="http://www1.appstate.edu/~kms/classes/psy5150/Documents/Braitenberg1984.pdf}">Braitenberg, V. (1984). Vehicles: Experiments in synthetic psychology. Cambridge, MA: MIT Press</a>  </li>
+            </ul>
+            <p><strong>Assignment:</strong> </p>
+            <ul>
+              <li>&quot;I saw a mudcrab the other day. Wretched creatures.&quot;: Create an artificial life demo using the Braitenberg model built on top of the collision avoidance agent simulation developed in the previous assignment.</li>
+            </ul>
+            <h2 id="week-11-introduction-to-shadertoy">Week 11: Introduction to ShaderToy</h2>
+            <p>Review of OpenGL pipeline and GLSL programming.</p>
+            <p><strong>Assignment:</strong>  Raymarching in ShaderToy: Use OpenGL via ShaderToy to render 3D surfaces based on polynomial functions.</p>
+            <h2 id="week-12-special-topics">Week 12: Special Topics</h2>
+            <p>TBD</p>
+            <h2 id="week-13-special-topics">Week 13: Special Topics</h2>
+            <p>TBD</p>
+            <h2 id="week-14-final-project-worktime">Week 14: Final Project worktime</h2>
+            <p>Troubleshooting tips and open worktime in class.</p>
           </div>
         </main>
       </div>

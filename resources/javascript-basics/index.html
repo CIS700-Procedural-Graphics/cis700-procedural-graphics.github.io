@@ -83,10 +83,13 @@ b.b.b.b.b.b.b.sayHello()    // &quot;Hello my name is Austin&quot;
     this.phonenumber = phonenumber;
   }
   getName() {
-    return name;
+    return this.name;
   }
   setName(newName) {
     this.name = newName;
+  }
+  getAge() {
+    return new Date() - this.createdAt;
   }
 }
 // Usage:
@@ -173,14 +176,14 @@ console.log(&quot;first&quot;);
               way to write the same code.</p>
             <pre><code class="lang-javascript">window.setTimeout(function() {
   console.log(&quot;second&quot;)
-});
+}, 1000);
 console.log(&quot;first&quot;);
 </code></pre>
             <p>Note that the function here is not named. This is what we call an &quot;anonymous&quot; function. If that&#39;s confusing, here&#39;s something else we often use for animation loops.</p>
             <pre><code class="lang-javascript">(function tick() {
   // draw stuff
   window.requestAnimationFrame(tick);
-})()
+})();
 </code></pre>
             <p>Here, we&#39;re creating a function called tick which will pass itself as a callback to <code>requestAnimationFrame</code>. This, whenever the browser is ready to draw, will call <code>tick</code> again. We wrap this all in parentheses and
               put <code>()</code> afterwards to call <code>tick()</code> for the first time.</p>

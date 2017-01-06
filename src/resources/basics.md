@@ -58,11 +58,15 @@ class Person {
   }
 
   getName() {
-    return name;
+    return this.name;
   }
 
   setName(newName) {
     this.name = newName;
+  }
+
+  getAge() {
+    return new Date() - this.createdAt;
   }
 }
 
@@ -189,7 +193,7 @@ This code will print "first" and then print "second" one second later. `setTimeo
 ```javascript
 window.setTimeout(function() {
   console.log("second")
-});
+}, 1000);
 console.log("first");
 ```
 
@@ -199,7 +203,7 @@ Note that the function here is not named. This is what we call an "anonymous" fu
 (function tick() {
   // draw stuff
   window.requestAnimationFrame(tick);
-})()
+})();
 ```
 
 Here, we're creating a function called tick which will pass itself as a callback to `requestAnimationFrame`. This, whenever the browser is ready to draw, will call `tick` again. We wrap this all in parentheses and put `()` afterwards to call `tick()` for the first time.
