@@ -52,7 +52,7 @@ Javascript is NOT an object-oriented language so there are no real classes, but 
 class Person {
   constructor(name, phonenumber) {
     // if we want to access these later, we need to bind them to 'this'
-    this.createdAt = new Date();        // impossible to be "private"
+    this.createdAt = new Date();
     this.name = name;
     this.phonenumber = phonenumber;
   }
@@ -68,56 +68,48 @@ class Person {
 
 // Usage:
 var person = new Person("Austin", "555-555-5555");
+console.log(person.name)              // Austin
 person.setName("Austin Eng")
 console.log(person.getName())         // Austin Eng
-person.name = "Austin"                // object properties are publically accessible
-console.log(person.getName())         // Austin
 ```
 
-## "this" Syntax
+## How it Actually Works (Sort of)
+
+As I said earlier, Javascript is not actually an object-oriented language, so if you do the above without knowing the underlying implementation, you may run into strange bugs and problems.
+If we want to get a better understanding of the Javascript, this is how you would implement the same functionality.
 
 ```javascript
 var Person = function(name, phonenumber) {
-  var createdAt = new Date();          // will not be directly accessible because it's not bound to "this"
-
+  this.createdAt = new Date();          // will not be directly accessible because it's not bound to "this"
+  this.name = name;
   this.phonenumber = phonenumber;
+}
 
-  this.getName = function() {          // name is protected by getters and setters
-    return name;
-  }
+Person.prototype.getName = function() {
+  return this.name;
+}
 
-  this.setName = function(newName) {
-    name = newName;
-  }
+Person.prototype.setName = function(newName) {
+  this.name = newName;
+}
+
+Person.prototype.getAge = function() {
+  return new Date() - this.createdAt;
 }
 
 // Usage:
-var person = new Person("Austin", "555-555-5555");      // Note: You MUST use "new". If you don't, "this" will be undefined
-console.log(person.getName())
-typeof person.name === "undefined"                      // this property is hidden
-console.log(person.phonenumber)                         // this one is not
+var person = new Person("Austin", "555-555-5555");
+console.log(person.name)              // Austin
+person.setName("Austin Eng")
+console.log(person.getName())         // Austin Eng
 ```
 
-## Closures
+### What is this `prototype` nonsense?
 
-```javascript
-var Person = function(name, phonenumber) {
-  var person = {
-    phonenumber: phonenumber
-  };
-  var createdAt = new Date();         // will not be directly accessible because it's not bound to "person"
-  
-  person.getName = function() {       // name is protected by getters and setters
-    return name;
-  }
+Javascript is not object-oriented. It is prototype-based. A `prototype` is another object from which an object inherits properties. Again, this is not a class because an object's prototype is a **specific object**. When you try to access a property of an object, if it is not defined, then the Javascript engine will look at the object's prototype. If it is not defined there, it will look at the object's prototype's prototype. This is what we call a **prototype chain**. In the above example, we define three functions: `getName`, `setName`, and `getAge` on the Person object. Remember: Person is a Function which is an Object. When we create an object with the `new` keyword, the result's `prototype` is automatically set to `Person.prototype`. Therefore, the resulting object from `var person = new Person("Austin", "555-555-5555");` does not have any properties called `getName`, `setName`, or `getAge`. It instead has a reference to the `Person` function. i.e. `person.__proto__ === Person`.
 
-  person.setName = function(newName) {
-    name = newName;
-  }
+There's a lot more special things you can do with defining object properties (like special getters and setters) but it's not totally necessary and not essential.
 
-  return person;
-}
-```
 
 # Javascript Modules
 
