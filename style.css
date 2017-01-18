@@ -23,6 +23,10 @@ h2 {
 a {
   color: #6896ba; }
 
+table td, table th {
+  padding: 5px;
+  border: 1px solid white; }
+
 .navbar-inverse {
   background-color: #000; }
   .navbar-inverse .navbar-brand {

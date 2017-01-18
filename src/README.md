@@ -1,5 +1,7 @@
 
-# CIS 700 Spring 2016 - Special Topics in Procedural Graphics
+# CIS 700 - Special Topics in Procedural Graphics
+### Spring 2016 - University of Pennsylvania
+### Rachel Hwang
 
 ## Course Description
 Sprawling cities, dense vegetation, infinite worlds &mdash; procedural graphics empower technical artists to quickly create complex digital assets that would otherwise be unfeasible. This course is intended to introduce the mathematical and algorithmic foundations of procedural modeling and animation techniques, and to offer hands-on experience designing and implementing “visual recipes” in original graphics projects by applying these methods. Students should have a strong interest in both the creative and technical aspects of computer graphics, as well as a solid programming background.
