@@ -13,7 +13,6 @@ All office hours will occur in the SIG lab. On Fridays, please feel free to join
 
 **Lecture Slides:**
 - [Introduction](/files/intro_1_17_17.pdf)
-- [Javascript Basics](/files/javascript_1_17_17.pdf)
 - [Noise](/files/noise_1_17_17.pdf)
 
 **Resources:**
