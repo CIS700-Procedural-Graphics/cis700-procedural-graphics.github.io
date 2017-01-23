@@ -1,29 +1,29 @@
 # Special Topics Course CIS 700 Procedural Graphics
 
 ## Week 1: Noise
-Introduction to procedural graphics and Canvas with Javascript. Pseudo-random noise techniques. Perlin Noise, Simplex Noise.
+Introduction to procedural graphics and Canvas with Javascript. Pseudo-random noise techniques. Perlin Noise.
 
 **Reading:**
   - [Ken Perlin, An image synthesizer, ACM SIGGRAPH Computer Graphics, v.19 n.3, p.287-296, Jul. 1985;](http://dl.acm.org/citation.cfm?id=325247&CFID=853506620&CFTOKEN=59155680)
   - [Ken Perlin. 2002. Improving noise. ACM Trans. Graph. 21, 3 (July 2002), 681-682.](http://mrl.nyu.edu/~perlin/paper445.pdf)
 
 **Assignment:**
-  - Structured Noise: Using Javascript, generate 2D structured noise in a program written with Three.js.
+  - Structured Noise: Using Javascript, generate 3D structured noise in a shader to create a 3D, animated cloud..
 
 **Additional Reference:**
   - [Lagae, A., Lefebvre, S., Cook, R., DeRose, T., Drettakis, G., Ebert, D., Lewis, J.P., Perlin, K., Zwicker, M., "A Survey of Procedural Noise Functions," Computer Graphics Forum, 2010.](https://diglib.eg.org/handle/10.2312/egst.20101059.001-019)
 
 ## Week 2: Distribution and Sampling
-Working with workhorse growth functions. Creating distributions. Point-scattering. World-brush. Voronoi diagrams. Brief overview of procedural generation pipelines.
+Working with workhorse growth functions and interpolation methods. Creating distributions. Point-scattering. World-brush. Voronoi diagrams.
 
 **Reading:**
   - [Arnaud Emilien , Ulysse Vimont , Marie-Paule Cani , Pierre Poulin , Bedrich Benes, WorldBrush: interactive example-based synthesis of procedural virtual worlds, ACM Transactions on Graphics (TOG), v.34 n.4, August 2015](http://dl.acm.org/citation.cfm?id=2766975)
 
 **Assignment:**
-  - Realistic Feather Distribution: Procedurally create a model of a feathered wing, using distribution functions to place the feathers.
+  - Realistic Feather Distribution: Procedurally create a model of a feathered wing, using various interpolation methods to place the feathers.
 
 ## Week 3: L-systems
-The basics of string replacement systems and designing and parsing simple grammars.
+The basics of string replacement systems. Designing and parsing simple grammars.
 
 **Reading:**
   - [Stephen Demko, Laurie Hodges, and Bruce Naylor. 1985. Construction of fractal objects with iterated function systems. In SIGGRAPH '85](http://dl.acm.org/citation.cfm?id=325245)
@@ -35,7 +35,7 @@ The basics of string replacement systems and designing and parsing simple gramma
   - ["The Algorithmic Beauty of Plants", Przemyslaw Prusinkiewicz, Aristid Lindenmayer](http://algorithmicbotany.org/papers/abop/abop-ch1.pdf)
 
 ## Week 4: Extending L-systems
-Moving on from strings. Shape grammars and additions to L-systems
+Moving on from strings. Shape grammars and additions to L-systems. Applications for urban environments.
 
 **Reading:**
   - [Pascal Muller , Peter Wonka , Simon Haegler , Andreas Ulmer , Luc Van Gool, Procedural modeling of buildings, ACM Transactions on Graphics (TOG), v.25 n.3, July 2006](http://dl.acm.org/citation.cfm?id=1141931)
@@ -54,7 +54,7 @@ Cell-shading, color compression, color space mapping.
   - One-Color Challenge: Using each color in the RGB32 gamut exactly once, create a visualization of a common computer science algorithm of your choice.
 
 ## Week 6: Implicit Surfaces
-Procedural geometry synthesis equations and constructed solid geometry.
+Marching cubes, procedural geometry synthesis equations and constructed solid geometry.
 
 **Reading:**
   - ["A Generalization of Algebraic Surface Drawing." ACM Transactions on Graphics, July 1982.](https://www.microsoft.com/en-us/research/wp-content/uploads/1982/07/p235-blinn.pdf)
