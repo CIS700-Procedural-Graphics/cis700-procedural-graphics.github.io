@@ -42,6 +42,7 @@ module.exports = {
       '/syllabus',
       '/resources',
       '/assignments/hw1-noise',
+      '/assignments/proj2-toolbox-functions',
       '/resources/javascript-basics'
     ], {}),
     new ExtractTextPlugin('style.css')

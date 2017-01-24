@@ -17,3 +17,10 @@ All office hours will occur in the SIG lab. On Fridays, please feel free to join
 
 **Resources:**
 - [Javascript Basics](/resources/javascript-basics)
+
+### 1/23/2017 - Toolbox Functions
+
+**Lecture Slides:**
+
+**In Class:**
+- [Christmas Trees](https://github.com/CIS700-Procedural-Graphics/IC-Distribution)

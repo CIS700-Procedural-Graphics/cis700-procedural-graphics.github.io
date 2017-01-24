@@ -13,6 +13,7 @@ var routes = (
     </Route> 
     <Route path="/assignments">
       <Route path="hw1-noise" component={() => (<MD md={require("../../hw/noise/base/README.md")} />)} />
+      <Route path="proj2-toolbox-functions" component={() => (<MD md={require("../../hw/wing/base/README.md")} />)} />
     </Route>
   </Router>
 )
