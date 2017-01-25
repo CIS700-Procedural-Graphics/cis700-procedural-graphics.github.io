@@ -21,6 +21,7 @@ All office hours will occur in the SIG lab. On Fridays, please feel free to join
 ### 1/23/2017 - Toolbox Functions
 
 **Lecture Slides:**
+- [Toolbox Functions](/files/toolbox_functions.pdf)
 
 **In Class:**
 - [Christmas Trees](https://github.com/CIS700-Procedural-Graphics/IC-Distribution)
