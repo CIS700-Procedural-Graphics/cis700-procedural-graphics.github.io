@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+  </head>
+  <body>
+    <div id="root">
+      <div>
+        <nav class="navbar navbar-inverse">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>   <span class="icon-bar"></span> </button>
+              <a class="navbar-brand" href="/">CIS700 Procedural Graphics</a> 
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li> <a href="/syllabus">Syllabus</a>  </li>
+                <li> <a href="/schedule">Schedule</a>  </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments  <span class="caret"></span>  </a> 
+                  <ul class="dropdown-menu">
+                    <li> <a href="/assignments/hw1-noise">HW1: Noise</a>  </li>
+                    <li> <a href="/assignments/proj2-toolbox-functions">Project 2: Toolbox Functions</a>  </li>
+                    <li> <a href="/assignments/hw3-lsystem">HW3: L-System</a>  </li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources  <span class="caret"></span>  </a> 
+                  <ul class="dropdown-menu">
+                    <li> <a href="/resources/javascript-basics">Javascript Basics</a>  </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main class="container">
+          <div class="markdown-page">
+            <h1 id="-project2-toolbox-functions-https-github-com-cis700-procedural-graphics-project2-toolbox-functions-">
+              <a href="https://github.com/CIS700-Procedural-Graphics/Project2-Toolbox-Functions">Project2: Toolbox Functions</a> 
+            </h1>
+            <h2 id="overview">Overview</h2>
+            <p>The objective of this assignment is to procedurally model and animate a bird wing. Let&#39;s get creative!</p>
+            <p>Start by forking and then cloning
+              <a href="https://github.com/CIS700-Procedural-Graphics/Project2-Toolbox-Functions">this repository</a> 
+            </p>
+            <h2 id="modeling">Modeling</h2>
+            <h5 id="reference-images">Reference images</h5>
+            <p>Search for three or more images of a bird wing (or any flying creature, really) in order to provide yourself reference material, as you&#39;re going to base your modeling and animation from these images. For the more artistic minds, feel free
+              to sketch your own concept.</p>
+            <h5 id="make-wing-curve">Make wing curve</h5>
+            <p>Begin with a 3D curve for your basic wing shape. Three.js provides classes to create many different types of curves, so you may use whatever type of curve you prefer.</p>
+            <h5 id="distribute-feathers">Distribute feathers</h5>
+            <p>We have provided a simple feather model from which to begin. You are not required to use this model if you have others that you prefer. From this base, you must duplicate the feather to model a complete wing, and your wing should consist of
+              at least thirty feathers. Distribute points along the curve you created previously; you will append the feather primitives to the curve at these points. Make sure that you modify the size, orientation, and color of your feathers depending
+              on their location on the wing. </p>
+            <p>Feel free to diversify your wings by using multiple base feather models.</p>
+            <h2 id="animation">Animation</h2>
+            <p>Add a wind force to your scene, and parameterize its direction and speed. You will use this wind force to animate the feathers of your wing by vibrating them slightly. Using Dat.GUI, allow the user to modify these wind parameters. Please note
+              that we don&#39;t care about your feather motion being physically accurate, as long as it looks nice.</p>
+            <p>Additionally, animate the control points of your wing curve to make the wing flap, and allow the user to control the speed of the wing flapping.</p>
+            <h2 id="interactivity">Interactivity</h2>
+            <p>Using Dat.GUI and the examples provided in the reference code, allow the user to adjust the following controls:</p>
+            <ol>
+              <li>The curvature of the wing&#39;s basic shape</li>
+              <li>Feather distribution</li>
+              <li>Feather size</li>
+              <li>Feather color</li>
+              <li>Feather orientation</li>
+              <li>Flapping speed</li>
+              <li>Flapping motion</li>
+            </ol>
+            <h2 id="for-the-overachievers">For the Overachievers</h2>
+            <p>Suggestions:</p>
+            <ul>
+              <li>Make a pretty iridescent or otherwise feather appropriate shader.</li>
+              <li>Otherwise, going the extra mile for this assignment is really in the polish!</li>
+            </ul>
+            <h2 id="submission">Submission</h2>
+            <ul>
+              <li>
+                <p>Create a folder called <code>references</code> to include your reference images.</p>
+              </li>
+              <li>
+                <p>Update <code>README.md</code> to contain a solid description of your project</p>
+              </li>
+              <li>
+                <p>Publish your project to gh-pages. <code>npm run deploy</code>. It should now be visible at
+                  <a href="http://username.github.io/repo-name">http://username.github.io/repo-name</a> 
+                </p>
+              </li>
+              <li>
+                <p>Create a
+                  <a href="https://help.github.com/articles/creating-a-pull-request/">pull request</a>  to this repository, and in the comment, include a link to your published project.</p>
+              </li>
+              <li>
+                <p>Submit the link to your pull request on Canvas.</p>
+              </li>
+            </ul>
+            <h2 id="getting-started">Getting Started</h2>
+            <ol>
+              <li>
+                <p>
+                  <a href="https://nodejs.org/en/download/">Install Node.js</a> . Node.js is a JavaScript runtime. It basically allows you to run JavaScript when not in a browser. For our purposes, this is not necessary. The important part is that with it comes <code>npm</code>, the Node Package
+                  Manager. This allows us to easily declare and install external dependencies such as
+                  <a href="https://threejs.org/">three.js</a>,
+                  <a href="https://workshop.chromeexperiments.com/examples/gui/#1--Basic-Usage">dat.GUI</a>, and
+                  <a href="http://glmatrix.net/">glMatrix</a> . Some other packages we&#39;ll be using make it significantly easier to develop your code and create modules for better code reuse and clarity. These tools make it <em>signficantly</em>  easier to write code in multiple <code>.js</code>                  files without globally defining everything.</p>
+              </li>
+              <li>
+                <p>Fork and clone your repository.</p>
+              </li>
+              <li>
+                <p>In the root directory of your project, run <code>npm install</code>. This will download all of those dependencies.</p>
+              </li>
+              <li>
+                <p>Do either of the following (but I highly recommend the first one for reasons I will explain later).</p>
+                <p> a. Run <code>npm start</code> and then go to <code>localhost:7000</code> in your web browser</p>
+                <p> b. Run <code>npm run build</code> and then go open <code>index.html</code> in your web browser</p>
+                <p> You should hopefully see the framework code with a 3D cube at the center of the screen!</p>
+              </li>
+            </ol>
+            <h2 id="developing-your-code">Developing Your Code</h2>
+            <p>All of the JavaScript code is living inside the <code>src</code> directory. The main file that gets executed when you load the page as you may have guessed is <code>main.js</code>. Here, you can make any changes you want, import functions
+              from other files, etc. The reason that I highly suggest you build your project with <code>npm start</code> is that doing so will start a process that watches for any changes you make to your code. If it detects anything, it&#39;ll automagically
+              rebuild your project and then refresh your browser window for you. Wow. That&#39;s cool. If you do it the other way, you&#39;ll need to run <code>npm build</code> and then refresh your page every time you want to test something.</p>
+            <h2 id="publishing-your-code">Publishing Your Code</h2>
+            <p>We highly suggest that you put your code on GitHub. One of the reasons we chose to make this course using JavaScript is that the Web is highly accessible and making your awesome work public and visible can be a huge benefit when you&#39;re
+              looking to score a job or internship. To aid you in this process, running <code>npm run deploy</code> will automatically build your project and push it to <code>gh-pages</code> where it will be visible at <code>username.github.io/repo-name</code>.</p>
+          </div>
+        </main>
+      </div>
+    </div>
+    <body>
+</html>
