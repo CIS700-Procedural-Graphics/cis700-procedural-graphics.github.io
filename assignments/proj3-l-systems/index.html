@@ -65,10 +65,10 @@
             <p>This is the parser, which will loop through your linked list of symbol nodes and apply rules at each iteration.</p>
             <p>Implement the following functions in L-System so that you can apply grammar rules to your axiom given some number of iterations. More details and implementation suggestions about functions can be found in the TODO comments</p>
             <ul>
-              <li>stringToLinkedList(input_string)</li>
-              <li>linkedListToString(linkedList)</li>
-              <li>replaceNode(linkedList, node, replacementString)</li>
-              <li>doIterations(num)</li>
+              <li><code>stringToLinkedList(input_string)</code></li>
+              <li><code>linkedListToString(linkedList)</code></li>
+              <li><code>replaceNode(linkedList, node, replacementString)</code></li>
+              <li><code>doIterations(num)</code></li>
             </ul>
             <h2 id="turtle">Turtle</h2>
             <p><code>turtle.js</code> has a function called renderSymbol that takes in a single node of a linked list and performs an operation to change the turtle’s state based on the symbol contained in the node. Usually, the turtle’s change in state
@@ -76,15 +76,15 @@
               are rotateTurtle, moveTurtle, moveForward, and makeCylinder. If you inspect the constructor of the Turtle class, you can see how to associate an operation with a grammar symbol.</p>
             <ul>
               <li>
-                <p>Modify turtle.js to support operations associated with the symbols &quot;[&quot; and &quot;]&quot;</p>
+                <p>Modify turtle.js to support operations associated with the symbols <code>[</code> and <code>]</code></p>
                 <ul>
-                  <li>When you parse &quot;[&quot; you need to store the current turtle state somewhere</li>
-                  <li>When you parse &quot;]&quot; you need to set your turtle’s state to the most recently stored state. Think of this a pushing and popping turtle states on and off a stack. For example, given F[+F][-F], the turtle should draw a Y shape.
-                    Note that your program must be capable of storing many turtle states at once in a stack.</li>
+                  <li>When you parse <code>[</code> you need to store the current turtle state somewhere</li>
+                  <li>When you parse <code>]</code> you need to set your turtle’s state to the most recently stored state. Think of this a pushing and popping turtle states on and off a stack. For example, given <code>F[+F][-F]</code>, the turtle should draw
+                    a Y shape. Note that your program must be capable of storing many turtle states at once in a stack.</li>
                 </ul>
               </li>
               <li>
-                <p>In addition to operations for “[“ and “]”, you must invent operations for any three symbols of your choosing.</p>
+                <p>In addition to operations for <code>[</code> and <code>]</code>, you must invent operations for any three symbols of your choosing.</p>
               </li>
             </ul>
             <h2 id="interactivity">Interactivity</h2>
