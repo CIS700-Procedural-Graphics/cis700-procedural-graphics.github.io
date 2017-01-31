@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+  </head>
+  <body>
+    <div id="root">
+      <div>
+        <nav class="navbar navbar-inverse">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>   <span class="icon-bar"></span> </button>
+              <a class="navbar-brand" href="/">CIS700 Procedural Graphics</a> 
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li> <a href="/syllabus">Syllabus</a>  </li>
+                <li> <a href="/schedule">Schedule</a>  </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments  <span class="caret"></span>  </a> 
+                  <ul class="dropdown-menu">
+                    <li> <a href="/assignments/proj1-noise">Project 1: Noise</a>  </li>
+                    <li> <a href="/assignments/proj2-toolbox-functions">Project 2: Toolbox Functions</a>  </li>
+                    <li> <a href="/assignments/proj3-l-systems">Project 3: L-Systems</a>  </li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources  <span class="caret"></span>  </a> 
+                  <ul class="dropdown-menu">
+                    <li> <a href="/resources/javascript-basics">Javascript Basics</a>  </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main class="container">
+          <div class="markdown-page">
+            <p>The objective of this assignment is to create an L System parser and generate interesting looking plants. Start by forking and then cloning this repository:
+              <a href="https://github.com/CIS700-Procedural-Graphics/Project3-LSystems">https://github.com/CIS700-Procedural-Graphics/Project3-LSystems</a> 
+            </p>
+            <h1 id="l-system-parser">L-System Parser</h1>
+            <p>lsystem.js contains classes for L-system, Rule, and LinkedList. Here’s our suggested structure:</p>
+            <p><strong>The Symbol Nodes/Linked List:</strong> </p>
+            <p>Rather than representing our symbols as a string like in many L-system implementations, we prefer to use a linked list. This allows us to store additional information about each symbol at time of parsing (e.g. what iteration was this symbol
+              added in?) Since we’re adding and replacing symbols at each iteration, we also save on the overhead of creating and destroying strings, since linked lists of course make it easy to add and remove nodes. You should write a Linked List class
+              with Nodes that contain at least the following information:</p>
+            <ul>
+              <li>The next node in the linked list</li>
+              <li>The previous node in the linked list</li>
+              <li>The grammar symbol at theis point in the overal string</li>
+            </ul>
+            <p>We also recommend that you write the following functions to interact with your linked list:</p>
+            <ul>
+              <li>A function to symmetrically link two nodes together (e.g. Node A’s next is Node B, and Node B’s prev is Node A)</li>
+              <li>A function to expand one of the symbol nodes of the linked list by replacing it with several new nodes. This function should look at the list of rules associated with the symbol in the linked list’s grammar dictionary, then generate a uniform
+                random number between 0 and 1 in order to determine which of the Rules should be used to expand the symbol node. You will refer to a Rule’s probability and compare it to your random number in order to determine which Rule should be chosen.</li>
+            </ul>
+            <p><strong>Rules:</strong> </p>
+            <p>These are containers for the preconditions, postconditions and probability of a single replacement operation. They should operate on a symbol node in your linked list.</p>
+            <p><strong>L-system:</strong> </p>
+            <p>This is the parser, which will loop through your linked list of symbol nodes and apply rules at each iteration.</p>
+            <p>Implement the following functions in L-System so that you can apply grammar rules to your axiom given some number of iterations. More details and implementation suggestions about functions can be found in the TODO comments</p>
+            <ul>
+              <li>stringToLinkedList(input_string)</li>
+              <li>linkedListToString(linkedList)</li>
+              <li>replaceNode(linkedList, node, replacementString)</li>
+              <li>doIterations(num)</li>
+            </ul>
+            <h2 id="turtle">Turtle</h2>
+            <p><code>turtle.js</code> has a function called renderSymbol that takes in a single node of a linked list and performs an operation to change the turtle’s state based on the symbol contained in the node. Usually, the turtle’s change in state
+              will result in some sort of rendering output, such as drawing a cylinder when the turtle moves forward. We have provided you with a few example functions to illustrate how to write your own functions to be called by renderSymbol; these functions
+              are rotateTurtle, moveTurtle, moveForward, and makeCylinder. If you inspect the constructor of the Turtle class, you can see how to associate an operation with a grammar symbol.</p>
+            <ul>
+              <li>
+                <p>Modify turtle.js to support operations associated with the symbols &quot;[&quot; and &quot;]&quot;</p>
+                <ul>
+                  <li>When you parse &quot;[&quot; you need to store the current turtle state somewhere</li>
+                  <li>When you parse &quot;]&quot; you need to set your turtle’s state to the most recently stored state. Think of this a pushing and popping turtle states on and off a stack. For example, given F[+F][-F], the turtle should draw a Y shape.
+                    Note that your program must be capable of storing many turtle states at once in a stack.</li>
+                </ul>
+              </li>
+              <li>
+                <p>In addition to operations for “[“ and “]”, you must invent operations for any three symbols of your choosing.</p>
+              </li>
+            </ul>
+            <h2 id="interactivity">Interactivity</h2>
+            <p>Using dat.GUI and the examples provided in the reference code, make some aspect of your demo an interactive variable. For example, you could modify:</p>
+            <ol>
+              <li>the axiom</li>
+              <li>Your input grammer rules and their probability</li>
+              <li>the angle of rotation of the turtle</li>
+              <li>the size or color or material of the cylinder the turtle draws, etc!</li>
+            </ol>
+            <h2 id="l-system-plants">L-System Plants</h2>
+            <p>Design a grammar for a new procedural plant! As the preceding parts of this assignment are basic computer science tasks, this is where you should spend the bulk of your time on this assignment. Come up with new grammar rules and include screenshots
+              of your plants in your README. For inspiration, take a look at Example 7: Fractal Plant in Wikipedia:
+              <a href="https://en.wikipedia.org/wiki/L-system">https://en.wikipedia.org/wiki/L-system</a>  Your procedural plant must have the following features</p>
+            <ol>
+              <li>Grow in 3D. Take advantage of three.js! </li>
+              <li>Have flowers or leaves that are added as a part of the grammar</li>
+              <li>Variation. Different instances of your plant should look distinctly different!</li>
+              <li>A twist. Broccoli trees are cool and all, but we hope to see sometime a little more surprising in your grammars</li>
+            </ol>
+            <h1 id="publishing-your-code">Publishing Your code</h1>
+            <p>Running <code>npm run deploy</code> will automatically build your project and push it to gh-pages where it will be visible at <code>username.github.io/repo-name</code>. NOTE: You MUST commit AND push all changes to your MASTER branch before
+              doing this or you may lose your work.</p>
+          </div>
+        </main>
+      </div>
+    </div>
+    <body>
+</html>
