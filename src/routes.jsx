@@ -12,8 +12,9 @@ var routes = (
       <Route path="javascript-basics" component={() => (<MD md={require("./resources/basics.md")} />)} />
     </Route> 
     <Route path="/assignments">
-      <Route path="hw1-noise" component={() => (<MD md={require("../../hw/noise/base/README.md")} />)} />
+      <Route path="proj1-noise" component={() => (<MD md={require("../../hw/noise/base/README.md")} />)} />
       <Route path="proj2-toolbox-functions" component={() => (<MD md={require("../../hw/wing/base/README.md")} />)} />
+      <Route path="proj3-l-systems" component={() => (<MD md={require("../../hw/lsystems/base/README.md")} />)} />
     </Route>
   </Router>
 )

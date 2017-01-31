@@ -27,8 +27,9 @@ class Template extends Component {
               <li className="dropdown">
                 <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments <span className="caret"></span></a>
                 <ul className="dropdown-menu">
-                  <li><Link to="/assignments/hw1-noise">HW1: Noise</Link></li>
+                  <li><Link to="/assignments/proj1-noise">Project 1: Noise</Link></li>
                   <li><Link to="/assignments/proj2-toolbox-functions">Project 2: Toolbox Functions</Link></li>
+                  <li><Link to="/assignments/proj3-l-systems">Project 3: L-Systems</Link></li>
                 </ul>
               </li>
               <li className="dropdown">
