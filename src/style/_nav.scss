@@ -1,12 +1,21 @@
 
 .navbar-inverse {
-  background-color: #000;
+  background-color: rgb(83, 83, 83);
 
   .navbar-brand {
-    color: #eee;
+    color: rgb(226, 227, 232);
   }
 
   .navbar-nav > li > a {
-    color: #ffc029;
+    color: rgb(226, 227, 232);
   }
+
+  .navbar-toggle {
+    border: 0;
+  }
+}
+
+.navbar {
+  border-radius: 0px;
+  border: 0px;
 }

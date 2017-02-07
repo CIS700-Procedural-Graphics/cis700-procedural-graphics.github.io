@@ -1,7 +1,14 @@
 
+@font-face {
+	font-family: 'Gill Sans';
+	src: url('./gillsans.eot');
+	src: local('gillsans'), url('./gillsans.woff') format('woff'), url('./gillsans.ttf') format('truetype');
+}
+
 html, body {
-  background-color: #111;
-  color: #ddd;
+  background-color: rgb(226, 227, 232);
+  color: rgb(83, 83, 83);
+  font-family: 'Droid Sans', sans-serif;
 }
 
 pre {
@@ -11,12 +18,17 @@ pre {
 }
 
 code {
-  background-color: #2b2b2b;
-  color: #6896ba;
+  background-color: rgb(83, 83, 83);
+  color: #9cbbd4;
 }
 
 .markdown-page {
   margin-bottom: 50px;
+}
+
+h1, h2, h3 {
+  font-family: 'Gill Sans', sans-serif;
+  text-transform: uppercase;
 }
 
 h1 {
