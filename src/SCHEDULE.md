@@ -34,7 +34,7 @@ All office hours will occur in the SIG lab. On Fridays, please feel free to join
 **In Class:**
 - These images show the 0th and 1st iterations of two L-systems. Submit images of the 5th iteration: [l-system_1](/files/mystery_grammar1.png) [l-system_2](/files/mystery_grammar2.png)
 
-### 2/7/2017
+### 2/7/2017 - Shape Grammar
 
 **Lecture Slides:**
 - [Shape Grammar](/files/shape_grammar_2_7_17.pdf)
