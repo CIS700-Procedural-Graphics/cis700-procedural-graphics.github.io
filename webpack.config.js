@@ -44,6 +44,7 @@ module.exports = {
       '/assignments/proj1-noise',
       '/assignments/proj2-toolbox-functions',
       '/assignments/proj3-l-systems',
+      '/assignments/proj4-shape-grammar',
       '/resources/javascript-basics'
     ], {}),
     new ExtractTextPlugin('style.css')

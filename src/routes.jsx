@@ -15,6 +15,7 @@ var routes = (
       <Route path="proj1-noise" component={() => (<MD md={require("../../hw/noise/base/README.md")} />)} />
       <Route path="proj2-toolbox-functions" component={() => (<MD md={require("../../hw/wing/base/README.md")} />)} />
       <Route path="proj3-l-systems" component={() => (<MD md={require("../../hw/lsystems/base/README.md")} />)} />
+      <Route path="proj4-shape-grammar" component={() => (<MD md={require("../../hw/shapegrammars/base/README.md")} />)} />
     </Route>
   </Router>
 )

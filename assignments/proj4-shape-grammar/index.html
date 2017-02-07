@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+  </head>
+  <body>
+    <div id="root">
+      <div>
+        <nav class="navbar navbar-inverse">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>   <span class="icon-bar"></span> </button>
+              <a class="navbar-brand" href="/">CIS700 Procedural Graphics</a> 
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li> <a href="/syllabus">Syllabus</a>  </li>
+                <li> <a href="/schedule">Schedule</a>  </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments  <span class="caret"></span>  </a> 
+                  <ul class="dropdown-menu">
+                    <li> <a href="/assignments/proj1-noise">Project 1: Noise</a>  </li>
+                    <li> <a href="/assignments/proj2-toolbox-functions">Project 2: Toolbox Functions</a>  </li>
+                    <li> <a href="/assignments/proj3-l-systems">Project 3: L-Systems</a>  </li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources  <span class="caret"></span>  </a> 
+                  <ul class="dropdown-menu">
+                    <li> <a href="/resources/javascript-basics">Javascript Basics</a>  </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main class="container">
+          <div class="markdown-page">
+            <h1 id="project-4-shape-grammar">Project 4: Shape Grammar</h1>
+            <p>
+              <a href="https://github.com/CIS700-Procedural-Graphics/Project4-Shape-Grammar">https://github.com/CIS700-Procedural-Graphics/Project4-Shape-Grammar</a> 
+            </p>
+            <p><em>Goal:</em>  to model an urban environment using a shape grammar. </p>
+            <p><em>Note:</em>  We’re well aware that a nice-looking procedural city is a lot of work for a single week. Focus on designing a nice building grammar. The city layout strategies outlined in class (the extended l-systems) are complex and not expected.
+              We will be satisfied with something reasonably simple, just not a uniform grid!</p>
+            <h2 id="symbol-node-5-points-">Symbol Node (5 points)</h2>
+            <p>Modify your symbol node class to include attributes necessary for rendering, such as</p>
+            <pre><code>- Associated geometry instance
+- Position
+- Scale 
+- Anything else you may need
+</code></pre>
+            <h2 id="grammar-design-55-points-">Grammar design (55 points)</h2>
+            <pre><code>- Design at least five shape grammar rules for producing procedural buildings. Your buildings should vary in geometry and decorative features (beyond just differently-scaled cubes!). At least some of your rules should create child geometry that is in some way dependent on its parent’s state. (20 points)
+    - Eg. A building may be subdivided along the x, y, or z axis into two smaller buildings
+    - Some of your rules must be designed to use some property about its location. (10 points)
+    - Your grammar should have some element of variation so your buildings are non-deterministic.  Eg. your buildings sometimes subdivide along the x axis, and sometimes the y. (10 points)
+- Write a renderer that will interpret the results of your shape grammar parser and adds the appropriate geometry to your scene for each symbol in your set. (10 points)
+</code></pre>
+            <h2 id="create-a-city-30-points-">Create a city (30 points)</h2>
+            <pre><code>- Add a ground plane or some other base terrain to your scene (0 points, come on now)
+- Using any strategy you’d like, procedurally generate features that demarcate your city into different areas in an interesting and plausible way (Just a uniform grid is neither interesting nor plausible). (20 points)
+    - Suggestions: roads, rivers, lakes, parks, high-population density
+    - Note, these features don’t have to be directly visible, like high-population density, but they should somehow be visible in the appearance or arrangement of your buildings. Eg. High population density is more likely to generate taller buildings
+- Generate buildings throughout your city, using information about your city’s features. Color your buildings with a method that uses some aspect of its state. Eg. Color buildings by height, by population density, by number of rules used to generate it. (5 points)
+- Document your grammar rules and general approach in the readme. (5 points)
+- ???
+- Profit.
+</code></pre>
+            <h2 id="make-it-interesting-10-">Make it interesting (10)</h2>
+            <pre><code>- Experiment! Make your city a work of art.
+</code></pre>
+            <h2 id="warnings-">Warnings:</h2>
+            <p>You can very easily blow up three.js with this assignment. With a very simple grammar, our medium quality machine was able to handle 100 buildings with 6 generations each, but be careful if you’re doing this all CPU-side.</p>
+            <h2 id="suggestions-for-the-overachievers-">Suggestions for the overachievers:</h2>
+            <p>Go for a very high level of decorative detail! Place buildings with a strategy such that buildings have doors and windows that are always accessible. Generate buildings with coherent interiors If dividing your city into lots, generate odd-shaped
+              lots and create building meshes that match their shape ie. rather than working with cubes, extrude upwards from the building footprints you find to generate a starting mesh to subdivide rather than starting with platonic geometry.</p>
+          </div>
+        </main>
+      </div>
+    </div>
+    <body>
+</html>
