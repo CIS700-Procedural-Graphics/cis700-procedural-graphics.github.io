@@ -68,7 +68,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _pretty = __webpack_require__(245);
+	var _pretty = __webpack_require__(246);
 
 	var _pretty2 = _interopRequireDefault(_pretty);
 
@@ -25693,6 +25693,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      } }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'proj4-shape-grammar', component: function component() {
 	        return _react2.default.createElement(_MD2.default, { md: __webpack_require__(244) });
+	      } }),
+	    _react2.default.createElement(_reactRouter.Route, { path: 'proj5-shaders', component: function component() {
+	        return _react2.default.createElement(_MD2.default, { md: __webpack_require__(245) });
 	      } })
 	  )
 	);
@@ -25893,6 +25896,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	                        { to: '/assignments/proj4-shape-grammar' },
 	                        'Project 4: Shape Grammar'
 	                      )
+	                    ),
+	                    _react2.default.createElement(
+	                      'li',
+	                      null,
+	                      _react2.default.createElement(
+	                        _reactRouter.Link,
+	                        { to: '/assignments/proj5-shaders' },
+	                        'Project 5: Shaders'
+	                      )
 	                    )
 	                  )
 	                ),
@@ -25999,6 +26011,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 245 */
+/***/ function(module, exports) {
+
+	module.exports = "<h1 id=\"project-5-shaders\">Project 5: Shaders</h1>\n<h2 id=\"project-instructions\">Project Instructions</h2>\n<p>Implement at least 75 points worth of shaders from the following list. We reserve the right to grant only partial credit for shaders that do not meet our standards, as well as extra credit for shaders that we find to be particularly impressive.</p>\n<p>Some of these shading effects were covered in lecture -- some were not. If you wish to implement the more complex effects, you will have to perform some extra research. Of course, we encourage such academic curiosity which is why we’ve included these advanced shaders in the first place!</p>\n<p>Document each shader you implement in your README with at least a sentence or two of explanation. Well-commented code will earn you many brownie (and probably sanity) points.</p>\n<p>If you use shadertoy or any materials as reference, please properly credit your sources in the README and on top of the shader file. Failing to do so will result in plagiarism and will significantly reduce your points.</p>\n<p>Examples: <a href=\"https://cis700-procedural-graphics.github.io/Project5-Shaders/\">https://cis700-procedural-graphics.github.io/Project5-Shaders/</a></p>\n<h3 id=\"15-points-each-instagram-like-filters\">15 points each: Instagram-like filters</h3>\n<ul>\n<li>Tone mapping:<ul>\n<li>Linear (+5 points)</li>\n<li>Reinhard (+5 points)</li>\n<li>Filmic (+5 points)</li>\n</ul>\n</li>\n<li>Gaussian blur (no double counting with Bloom)</li>\n<li>Iridescence</li>\n<li>Pointilism</li>\n<li>Vignette</li>\n<li>Fish-eye bulge</li>\n</ul>\n<h3 id=\"25-points-each-\">25 points each:</h3>\n<ul>\n<li>Bloom</li>\n<li>Noise Warp</li>\n<li>Hatching</li>\n<li>Lit Sphere (<a href=\"http://www.ppsloan.org/publications/LitSphere.pdf\">paper</a>)</li>\n</ul>\n<h3 id=\"37-5-points-each-\">37.5 points each:</h3>\n<ul>\n<li>K-means color compression (unless you are extremely clever, the k-means clusterer has to be CPU side)</li>\n<li>Dithering</li>\n<li>Edge detection with Sobel filtering</li>\n<li>Uncharted 2 customizable filmic curve, following John Hable’s presetantion. <ul>\n<li>Without Linear, Reinhard, filmic (+10 points)</li>\n<li>With all of linear, Reinhard, filmic (+10 points)</li>\n<li>Customizable via GUI (+17.5 points)</li>\n<li>Controlling Exposure (4 points)</li>\n<li>Side by side comparison between linear, Reinhard, filmic, and Uncharted2 (13.5 points). </li>\n</ul>\n</li>\n</ul>\n<h3 id=\"5-points-interactivity\">5 points - Interactivity</h3>\n<p>Implement a dropdown GUI to select different shader effects from your list.</p>\n<h3 id=\"-points\">??? points</h3>\n<p>Propose your own shading effects!</p>\n<h3 id=\"for-the-overachievers-\">For the overachievers:</h3>\n<p>Weave all your shading effects into one aesthetically-coherent scene, perhaps by incorporating some of your previous assignments!</p>\n<h2 id=\"getting-started\">Getting Started</h2>\n<h3 id=\"main-js\">main.js</h3>\n<p><code>main.js</code> is responsible for setting up the scene with the Mario mesh, initializing GUI and camera, etc.</p>\n<h3 id=\"adding-shaders\">Adding Shaders</h3>\n<p>To add a shader, you&#39;ll want to add a file to the <code>src/shaders</code> or <code>src/post</code> folder. As examples, we&#39;ve provided two shaders <code>lambert.js</code> and <code>grayscale.js</code>. Here, I will give a brief overview of how these work and how everything hooks together.</p>\n<p><strong>shaders/lambert.js</strong></p>\n<p>IMPORTANT: I make my lambert shader available by exporting it in <code>shaders/index.js</code>. </p>\n<pre><code class=\"lang-javascript\">export {default as Lambert} from &#39;./Lambert&#39;\n</code></pre>\n<p>Each shader should export a function that takes in the <code>renderer</code>, <code>scene</code>, and <code>camera</code>. That function should return a <code>Shader</code> Object.</p>\n<p><code>Shader.initGUI</code> is a function that will be called to initialize the GUI for that shader. in <code>lambert.js</code>, you can see that it&#39;s here that I set up all the parameters that will affect my shader.</p>\n<p><code>Shader.material</code> should be a <code>THREE.ShaderMaterial</code>. This should be pretty similar to what you&#39;ve seen in previous projects. <code>Shader.material.vertexShader</code> and <code>Shader.material.fragmentShader</code> are the vertex and fragment shaders used.</p>\n<p>At the bottom, I have the following snippet of code. All it does is bind the Mario texture once it&#39;s loaded.</p>\n<pre><code class=\"lang-javascript\">textureLoaded.then(function(texture) {\n    Shader.material.uniforms.texture.value = texture;\n});\n</code></pre>\n<p>So when you change the Shader parameter in the GUI, <code>Shader.initGUI(gui)</code> will be called to initialize the GUI, and then the Mario mesh will have <code>Shader.material</code> applied to it.</p>\n<p><strong>post/grayscale.js</strong></p>\n<p>GUI parameters here are initialized the same way they are for the other shaders.</p>\n<p>Post process shaders should use the THREE.js <code>EffectComposer</code>. To set up the grayscale filter, I first create a new composer: <code>var composer = new EffectComposer(renderer);</code>. Then I add a a render pass as the first pass: <code>composer.addPass(new EffectComposer.RenderPass(scene, camera));</code>. This will set up the composer to render the scene as normal into a buffer. I add my filter to operate on that buffer: <code>composer.addPass(GrayscaleShader);</code>, and mark it as the final pass that will write to the screen <code>GrayscaleShader.renderToScreen = true;</code></p>\n<p>GrayscaleShader is a <code>EffectComposer.ShaderPass</code> which basically takes the same arguments as <code>THREE.ShaderMaterial</code>. Note, that one uniform that will have to include is <code>tDiffuse</code>. This is the texture sampler which the EffectComposer will automatically bind the previously rendered pass to. If you look at <code>glsl/grayscale-frag.glsl</code>, this is the texture we read from to get the previous pixel color: <code>vec4 col = texture2D(tDiffuse, f_uv);</code>.</p>\n<p>IMPORTANT: You initially define your shader passes like so:</p>\n<pre><code class=\"lang-javascript\">var GrayscaleShader = new EffectComposer.ShaderPass({\n    uniforms: {\n        tDiffuse: {\n            type: &#39;t&#39;,\n            value: null\n        },\n        u_amount: {\n            type: &#39;f&#39;,\n            value: options.amount\n        }\n    },\n    vertexShader: require(&#39;../glsl/pass-vert.glsl&#39;),\n    fragmentShader: require(&#39;../glsl/grayscale-frag.glsl&#39;)\n});\n</code></pre>\n<p>BUT, if you want to modify the uniforms, you need to do so like so: <code>GrayscaleShader.material.uniforms.u_amount.value = val;</code>. Note the extra <code>.material</code> property.</p>\n<h2 id=\"deploy\">Deploy</h2>\n<ol>\n<li>Create a <code>gh-pages</code> branch on GitHub</li>\n<li>Do <code>npm run build</code></li>\n<li>Commit and add all your changes.</li>\n<li>Do <code>npm run deploy</code></li>\n</ol>\n";
+
+/***/ },
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -26010,7 +26028,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var beautify = __webpack_require__(246);
+	var beautify = __webpack_require__(247);
 
 	module.exports = function pretty(str, options) {
 	  str = beautify.html(str, {
@@ -26053,7 +26071,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 246 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -26094,9 +26112,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	if (true) {
 	    // Add support for AMD ( https://github.com/amdjs/amdjs-api/wiki/AMD#defineamd-property- )
 	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [
-	        __webpack_require__(247),
 	        __webpack_require__(248),
-	        __webpack_require__(249)
+	        __webpack_require__(249),
+	        __webpack_require__(250)
 	    ], __WEBPACK_AMD_DEFINE_RESULT__ = function(js_beautify, css_beautify, html_beautify) {
 	        return get_beautify(js_beautify, css_beautify, html_beautify);
 	    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -26114,7 +26132,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 247 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jshint curly:true, eqeqeq:true, laxbreak:true, noempty:false */
@@ -28207,7 +28225,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 248 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jshint curly:true, eqeqeq:true, laxbreak:true, noempty:false */
@@ -28704,7 +28722,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 249 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jshint curly:true, eqeqeq:true, laxbreak:true, noempty:false */
@@ -29627,9 +29645,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    if (true) {
 	        // Add support for AMD ( https://github.com/amdjs/amdjs-api/wiki/AMD#defineamd-property- )
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, __webpack_require__(247), __webpack_require__(248)], __WEBPACK_AMD_DEFINE_RESULT__ = function(requireamd) {
-	            var js_beautify =  __webpack_require__(247);
-	            var css_beautify =  __webpack_require__(248);
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, __webpack_require__(248), __webpack_require__(249)], __WEBPACK_AMD_DEFINE_RESULT__ = function(requireamd) {
+	            var js_beautify =  __webpack_require__(248);
+	            var css_beautify =  __webpack_require__(249);
 
 	            return {
 	              html_beautify: function(html_source, options) {
