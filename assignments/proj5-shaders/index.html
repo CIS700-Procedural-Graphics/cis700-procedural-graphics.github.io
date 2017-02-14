@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+  </head>
+  <body>
+    <div id="root">
+      <div>
+        <nav class="navbar navbar-inverse">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>   <span class="icon-bar"></span> </button>
+              <a class="navbar-brand" href="/">CIS700 Procedural Graphics</a> 
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li> <a href="/syllabus">Syllabus</a>  </li>
+                <li> <a href="/schedule">Schedule</a>  </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments  <span class="caret"></span>  </a> 
+                  <ul class="dropdown-menu">
+                    <li> <a href="/assignments/proj1-noise">Project 1: Noise</a>  </li>
+                    <li> <a href="/assignments/proj2-toolbox-functions">Project 2: Toolbox Functions</a>  </li>
+                    <li> <a href="/assignments/proj3-l-systems">Project 3: L-Systems</a>  </li>
+                    <li> <a href="/assignments/proj4-shape-grammar">Project 4: Shape Grammar</a>  </li>
+                    <li> <a href="/assignments/proj5-shaders">Project 5: Shaders</a>  </li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources  <span class="caret"></span>  </a> 
+                  <ul class="dropdown-menu">
+                    <li> <a href="/resources/javascript-basics">Javascript Basics</a>  </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main class="container">
+          <div class="markdown-page">
+            <h1 id="project-5-shaders">Project 5: Shaders</h1>
+            <h2 id="project-instructions">Project Instructions</h2>
+            <p>Implement at least 75 points worth of shaders from the following list. We reserve the right to grant only partial credit for shaders that do not meet our standards, as well as extra credit for shaders that we find to be particularly impressive.</p>
+            <p>Some of these shading effects were covered in lecture -- some were not. If you wish to implement the more complex effects, you will have to perform some extra research. Of course, we encourage such academic curiosity which is why we’ve included
+              these advanced shaders in the first place!</p>
+            <p>Document each shader you implement in your README with at least a sentence or two of explanation. Well-commented code will earn you many brownie (and probably sanity) points.</p>
+            <p>If you use shadertoy or any materials as reference, please properly credit your sources in the README and on top of the shader file. Failing to do so will result in plagiarism and will significantly reduce your points.</p>
+            <p>Examples:
+              <a href="https://cis700-procedural-graphics.github.io/Project5-Shaders/">https://cis700-procedural-graphics.github.io/Project5-Shaders/</a> 
+            </p>
+            <h3 id="15-points-each-instagram-like-filters">15 points each: Instagram-like filters</h3>
+            <ul>
+              <li>Tone mapping:
+                <ul>
+                  <li>Linear (+5 points)</li>
+                  <li>Reinhard (+5 points)</li>
+                  <li>Filmic (+5 points)</li>
+                </ul>
+              </li>
+              <li>Gaussian blur (no double counting with Bloom)</li>
+              <li>Iridescence</li>
+              <li>Pointilism</li>
+              <li>Vignette</li>
+              <li>Fish-eye bulge</li>
+            </ul>
+            <h3 id="25-points-each-">25 points each:</h3>
+            <ul>
+              <li>Bloom</li>
+              <li>Noise Warp</li>
+              <li>Hatching</li>
+              <li>Lit Sphere (
+                <a href="http://www.ppsloan.org/publications/LitSphere.pdf">paper</a> )</li>
+            </ul>
+            <h3 id="37-5-points-each-">37.5 points each:</h3>
+            <ul>
+              <li>K-means color compression (unless you are extremely clever, the k-means clusterer has to be CPU side)</li>
+              <li>Dithering</li>
+              <li>Edge detection with Sobel filtering</li>
+              <li>Uncharted 2 customizable filmic curve, following John Hable’s presetantion.
+                <ul>
+                  <li>Without Linear, Reinhard, filmic (+10 points)</li>
+                  <li>With all of linear, Reinhard, filmic (+10 points)</li>
+                  <li>Customizable via GUI (+17.5 points)</li>
+                  <li>Controlling Exposure (4 points)</li>
+                  <li>Side by side comparison between linear, Reinhard, filmic, and Uncharted2 (13.5 points). </li>
+                </ul>
+              </li>
+            </ul>
+            <h3 id="5-points-interactivity">5 points - Interactivity</h3>
+            <p>Implement a dropdown GUI to select different shader effects from your list.</p>
+            <h3 id="-points">??? points</h3>
+            <p>Propose your own shading effects!</p>
+            <h3 id="for-the-overachievers-">For the overachievers:</h3>
+            <p>Weave all your shading effects into one aesthetically-coherent scene, perhaps by incorporating some of your previous assignments!</p>
+            <h2 id="getting-started">Getting Started</h2>
+            <h3 id="main-js">main.js</h3>
+            <p><code>main.js</code> is responsible for setting up the scene with the Mario mesh, initializing GUI and camera, etc.</p>
+            <h3 id="adding-shaders">Adding Shaders</h3>
+            <p>To add a shader, you&#39;ll want to add a file to the <code>src/shaders</code> or <code>src/post</code> folder. As examples, we&#39;ve provided two shaders <code>lambert.js</code> and <code>grayscale.js</code>. Here, I will give a brief overview
+              of how these work and how everything hooks together.</p>
+            <p><strong>shaders/lambert.js</strong> </p>
+            <p>IMPORTANT: I make my lambert shader available by exporting it in <code>shaders/index.js</code>. </p>
+            <pre><code class="lang-javascript">export {default as Lambert} from &#39;./Lambert&#39;
+</code></pre>
+            <p>Each shader should export a function that takes in the <code>renderer</code>, <code>scene</code>, and <code>camera</code>. That function should return a <code>Shader</code> Object.</p>
+            <p><code>Shader.initGUI</code> is a function that will be called to initialize the GUI for that shader. in <code>lambert.js</code>, you can see that it&#39;s here that I set up all the parameters that will affect my shader.</p>
+            <p><code>Shader.material</code> should be a <code>THREE.ShaderMaterial</code>. This should be pretty similar to what you&#39;ve seen in previous projects. <code>Shader.material.vertexShader</code> and <code>Shader.material.fragmentShader</code>              are the vertex and fragment shaders used.</p>
+            <p>At the bottom, I have the following snippet of code. All it does is bind the Mario texture once it&#39;s loaded.</p>
+            <pre><code class="lang-javascript">textureLoaded.then(function(texture) {
+    Shader.material.uniforms.texture.value = texture;
+});
+</code></pre>
+            <p>So when you change the Shader parameter in the GUI, <code>Shader.initGUI(gui)</code> will be called to initialize the GUI, and then the Mario mesh will have <code>Shader.material</code> applied to it.</p>
+            <p><strong>post/grayscale.js</strong> </p>
+            <p>GUI parameters here are initialized the same way they are for the other shaders.</p>
+            <p>Post process shaders should use the THREE.js <code>EffectComposer</code>. To set up the grayscale filter, I first create a new composer: <code>var composer = new EffectComposer(renderer);</code>. Then I add a a render pass as the first pass:
+              <code>composer.addPass(new EffectComposer.RenderPass(scene, camera));</code>. This will set up the composer to render the scene as normal into a buffer. I add my filter to operate on that buffer: <code>composer.addPass(GrayscaleShader);</code>,
+              and mark it as the final pass that will write to the screen <code>GrayscaleShader.renderToScreen = true;</code></p>
+            <p>GrayscaleShader is a <code>EffectComposer.ShaderPass</code> which basically takes the same arguments as <code>THREE.ShaderMaterial</code>. Note, that one uniform that will have to include is <code>tDiffuse</code>. This is the texture sampler
+              which the EffectComposer will automatically bind the previously rendered pass to. If you look at <code>glsl/grayscale-frag.glsl</code>, this is the texture we read from to get the previous pixel color: <code>vec4 col = texture2D(tDiffuse, f_uv);</code>.</p>
+            <p>IMPORTANT: You initially define your shader passes like so:</p>
+            <pre><code class="lang-javascript">var GrayscaleShader = new EffectComposer.ShaderPass({
+    uniforms: {
+        tDiffuse: {
+            type: &#39;t&#39;,
+            value: null
+        },
+        u_amount: {
+            type: &#39;f&#39;,
+            value: options.amount
+        }
+    },
+    vertexShader: require(&#39;../glsl/pass-vert.glsl&#39;),
+    fragmentShader: require(&#39;../glsl/grayscale-frag.glsl&#39;)
+});
+</code></pre>
+            <p>BUT, if you want to modify the uniforms, you need to do so like so: <code>GrayscaleShader.material.uniforms.u_amount.value = val;</code>. Note the extra <code>.material</code> property.</p>
+            <h2 id="deploy">Deploy</h2>
+            <ol>
+              <li>Create a <code>gh-pages</code> branch on GitHub</li>
+              <li>Do <code>npm run build</code></li>
+              <li>Commit and add all your changes.</li>
+              <li>Do <code>npm run deploy</code></li>
+            </ol>
+          </div>
+        </main>
+      </div>
+    </div>
+    <body>
+      <footer>
+        <script>
+          (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+              (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+              m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+          })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+          ga('create', 'UA-91822551-1', 'auto');
+          ga('send', 'pageview');
+        </script>
+      </footer>
+</html>
