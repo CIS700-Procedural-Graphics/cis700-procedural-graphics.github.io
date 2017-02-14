@@ -49,6 +49,7 @@ module.exports = {
       '/assignments/proj2-toolbox-functions',
       '/assignments/proj3-l-systems',
       '/assignments/proj4-shape-grammar',
+      '/assignments/proj5-shaders',
       '/resources/javascript-basics'
     ], {}),
     new ExtractTextPlugin('style.css')
