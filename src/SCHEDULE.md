@@ -9,6 +9,14 @@ All office hours will occur in the SIG lab. On Fridays, please feel free to join
 
 # Schedule
 
+### 2/14/2017
+
+**Lecture Slides:**
+- [Color and Shading](/files/color_2_14_17.pdf)
+
+**In Class:**
+- Make a toon shader and a color filter! [link](https://github.com/CIS700-Procedural-Graphics/Project5-Shaders)
+
 ### 2/7/2017 - Shape Grammar
 
 **Lecture Slides:**
