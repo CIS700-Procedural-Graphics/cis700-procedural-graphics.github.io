@@ -9,7 +9,10 @@ All office hours will occur in the SIG lab. On Fridays, please feel free to join
 
 # Schedule
 
-### 2/14/2017
+### 2/21/2017 - Implicit Surfaces
+- [Implicit Surfaces](/files/implicit_surfaces_2_21_17.pdf)
+
+### 2/14/2017 - Color and Shading
 
 **Lecture Slides:**
 - [Color and Shading](/files/color_2_14_17.pdf)
