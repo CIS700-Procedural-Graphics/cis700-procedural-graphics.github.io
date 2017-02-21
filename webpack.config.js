@@ -50,6 +50,8 @@ module.exports = {
       '/assignments/proj3-l-systems',
       '/assignments/proj4-shape-grammar',
       '/assignments/proj5-shaders',
+      '/assignments/proj6-marchingcubes',
+      '/assignments/proj6-raymarching',
       '/resources/javascript-basics'
     ], {}),
     new ExtractTextPlugin('style.css')
