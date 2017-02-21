@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+  </head>
+  <body>
+    <div id="root">
+      <div>
+        <nav class="navbar navbar-inverse">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>   <span class="icon-bar"></span> </button>
+              <a class="navbar-brand" href="/">CIS700 Procedural Graphics</a> 
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li> <a href="/syllabus">Syllabus</a>  </li>
+                <li> <a href="/schedule">Schedule</a>  </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments  <span class="caret"></span>  </a> 
+                  <ul class="dropdown-menu">
+                    <li> <a href="/assignments/proj1-noise">Project 1: Noise</a>  </li>
+                    <li> <a href="/assignments/proj2-toolbox-functions">Project 2: Toolbox Functions</a>  </li>
+                    <li> <a href="/assignments/proj3-l-systems">Project 3: L-Systems</a>  </li>
+                    <li> <a href="/assignments/proj4-shape-grammar">Project 4: Shape Grammar</a>  </li>
+                    <li> <a href="/assignments/proj5-shaders">Project 5: Shaders</a>  </li>
+                    <li> <a href="/assignments/proj6-marchingcubes">Project 6: Marching Cubes</a>  </li>
+                    <li> <a href="/assignments/proj6-raymarching">Project 6: Ray Marching</a>  </li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources  <span class="caret"></span>  </a> 
+                  <ul class="dropdown-menu">
+                    <li> <a href="/resources/javascript-basics">Javascript Basics</a>  </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main class="container">
+          <div class="markdown-page">
+            <h1 id="hw-6-ray-marching-and-sdfs">HW 6: Ray marching and SDFs</h1>
+            <h2 id="goal">Goal</h2>
+            <p>In this assignment, you will be implementing SDF operators on various primitives and use a ray marcher to render them. Ray marching is a technique for rendering implicit surfaces where the ray-primitive intersection equation cannot be solved
+              analytically.</p>
+            <p><strong>Warning</strong> : this assignment diverges significantly from marching cubes, so switching options midway can be costly for your time and effort.</p>
+            <h2 id="base-code-framework">Base code framework</h2>
+            <p>We have provided a preview scene, and a toggle for the ray marcher rendering. When you correctly implement the ray marcher, the image should match the preview scene containing the simple geometry. Your ray marching calculation should be performed
+              in the fragment shader.</p>
+            <h3 id="ray-marcher-25-pts-">Ray Marcher (25 pts)</h3>
+            <p>The ray marcher should generate a ray direction, and march through the scene using the distances computed from sphere tracing.</p>
+            <p><strong>Note</strong> : Your scene won&#39;t be rendered until you have implemented the SDFs for primitives below. </p>
+            <ul>
+              <li>Generate Rays (15 pts): for each fragment inside the fragment shader, compute a ray direction for the ray marcher</li>
+              <li>Sphere Tracing (10 pts): compute the nearest distance from the scene SDFs and update the ray marching&#39;s step size.</li>
+            </ul>
+            <h3 id="sdf-50-pts-">SDF (50 pts)</h3>
+            <h5 id="implement-primitive-sdfs-15pts-">Implement primitive SDFs (15pts):</h5>
+            <p>These are simple primitives with well-defined SDFs. We encourage trying other SDFs not listed here, they are interesting! </p>
+            <ul>
+              <li>Sphere (3pts)</li>
+              <li>Box (3pts)</li>
+              <li>Cone (3pts)</li>
+              <li>Torus (3pts)</li>
+              <li>Cylinder (3pts)</li>
+            </ul>
+            <h5 id="useful-operators-15pts-">Useful Operators (15pts)</h5>
+            <p>To create constructive geometry, and interesting shapes (such as holes, bumps, etc.), implement the following operators to combine your primitive SDFs.</p>
+            <ul>
+              <li>Intersection (2pts)</li>
+              <li>Subtraction (3pts)</li>
+              <li>Union (2pts)</li>
+              <li>Transformation (8pts)
+                <ul>
+                  <li>translation and scaling
+                    <h5 id="compute-normals-based-on-gradient-15-pts-">Compute normals based on gradient (15 pts)</h5>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <p>Compute the normals to use for shading your surface.</p>
+            <ul>
+              <li>Read Chapter 13 of
+                <a href="http://graphics.cs.williams.edu/courses/cs371/f14/reading/implicit.pdf">Morgan McGuire&#39;s notes</a> 
+                <h5 id="material-5pts-">Material (5pts)</h5>
+                Implement a simple Lambert material. Additional materials can earn extra points.</li>
+            </ul>
+            <h3 id="custom-scene-25-pts-">Custom Scene (25 pts)</h3>
+            <h5 id="create-a-mechanical-device-or-a-scene-of-your-choice-using-all-operators">Create a mechanical device or a scene of your choice using all operators</h5>
+            <ul>
+              <li>intersection, subtraction, union, transformation (20pts)
+                <h5 id="animate-the-scene-5pts-">Animate the scene (5pts)</h5>
+                Use time as an input to some of your functions to animate your scene!</li>
+            </ul>
+            <h2 id="extra-credits-up-to-30-pts-">Extra credits (Up to 30 pts)</h2>
+            <ul>
+              <li>Implement SDF for
+                <a href="https://www.shadertoy.com/view/XsXXWS">Mandelbulb</a>  (10pts)
+                <ul>
+                  <li>You need to implement naive raymarching (not sphere tracing) to get this to work </li>
+                </ul>
+              </li>
+              <li>Lighting effects
+                <ul>
+                  <li>Soft shadowing using secondary rays (5pts)</li>
+                  <li>Ambient occlusion (10pts)</li>
+                </ul>
+              </li>
+              <li>Additional materials besides Lambert. (5pts each)</li>
+              <li>Additional SDFs besides the listed primitive. (5pts each)</li>
+            </ul>
+            <h2 id="resources">Resources</h2>
+            <p>
+              <a href="http://graphics.cs.williams.edu/courses/cs371/f14/reading/implicit.pdf">http://graphics.cs.williams.edu/courses/cs371/f14/reading/implicit.pdf</a> 
+            </p>
+            <h2 id="submission">Submission</h2>
+            <ul>
+              <li>Update <code>README.md</code> to contain a solid description of your project</li>
+              <li>Publish your project to gh-pages. <code>npm run deploy</code>. It should now be visible at
+                <a href="http://username.github.io/repo-name">http://username.github.io/repo-name</a> 
+              </li>
+              <li>Create a
+                <a href="https://help.github.com/articles/creating-a-pull-request/">pull request</a>  to this repository, and in the comment, include a link to your published project.</li>
+              <li>Submit the link to your pull request on Canvas.</li>
+            </ul>
+            <h2 id="deploy">Deploy</h2>
+            <ul>
+              <li><code>npm run build</code></li>
+              <li>Add and commit all changes</li>
+              <li><code>npm run deploy</code></li>
+              <li>If you&#39;re having problems with assets not linking correctly, make sure you wrap you&#39;re filepaths in <code>require()</code>. This will make the bundler package and your static assets as well. So, instead of <code>loadTexture(&#39;./images/thing.bmp&#39;)</code>,
+                do <code>loadTexture(require(&#39;./images/thing.bmp&#39;))</code>.</li>
+            </ul>
+          </div>
+        </main>
+      </div>
+    </div>
+    <body>
+      <footer>
+        <script>
+          (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+              (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+              m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+          })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+          ga('create', 'UA-91822551-1', 'auto');
+          ga('send', 'pageview');
+        </script>
+      </footer>
+</html>

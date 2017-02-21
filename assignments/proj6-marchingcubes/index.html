@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+  </head>
+  <body>
+    <div id="root">
+      <div>
+        <nav class="navbar navbar-inverse">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>   <span class="icon-bar"></span> </button>
+              <a class="navbar-brand" href="/">CIS700 Procedural Graphics</a> 
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li> <a href="/syllabus">Syllabus</a>  </li>
+                <li> <a href="/schedule">Schedule</a>  </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments  <span class="caret"></span>  </a> 
+                  <ul class="dropdown-menu">
+                    <li> <a href="/assignments/proj1-noise">Project 1: Noise</a>  </li>
+                    <li> <a href="/assignments/proj2-toolbox-functions">Project 2: Toolbox Functions</a>  </li>
+                    <li> <a href="/assignments/proj3-l-systems">Project 3: L-Systems</a>  </li>
+                    <li> <a href="/assignments/proj4-shape-grammar">Project 4: Shape Grammar</a>  </li>
+                    <li> <a href="/assignments/proj5-shaders">Project 5: Shaders</a>  </li>
+                    <li> <a href="/assignments/proj6-marchingcubes">Project 6: Marching Cubes</a>  </li>
+                    <li> <a href="/assignments/proj6-raymarching">Project 6: Ray Marching</a>  </li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources  <span class="caret"></span>  </a> 
+                  <ul class="dropdown-menu">
+                    <li> <a href="/resources/javascript-basics">Javascript Basics</a>  </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main class="container">
+          <div class="markdown-page">
+            <h1 id="project-6-implicit-surfaces-marching-cubes">Project 6: Implicit surfaces - Marching cubes</h1>
+            <p><strong>Goal:</strong>  Implement an isosurface created from metaballs using the marching cubes algorithm. </p>
+            <p>Metaballs are organic-looking n-dimensional objects. We will be implementing a 3-dimensional metaballs. They are great to make bloppy shapes. An isosurface is created whenever the metaball function crosses a certain threshold, called isolevel.
+              The metaball function describes the total influences of each metaball to a given points. A metaball influence is a function between its radius and distance to the point:</p>
+            <p><code>f(point) = (radius * radius) / (distance * distance)</code></p>
+            <p>By summing up all these influences, you effectively describes all the points that are greater than the isolevel as inside, and less than the isolevel as outside (or vice versa). As an observation, the bigger the metaball&#39;s radius is, the
+              bigger its influence is.</p>
+            <p>Marching cubes essentially voxelize the space, then generate triangles based on the density function distribution at the corners of each voxel. By increasing the voxelized grid&#39;s resolution, the surface eventually gets that blobby, organic
+              look of the metaballs. Marching cubes can achieve a similar effect to ray marching for rendering implicit surfaces, but in addition to the rendered image, you also retain actual geometries. </p>
+            <p>Marching cubes are commonly used in MRI scanning, where you can generate geometries for the scans. Marching cubes are also used to generate complex terrains with caves in games. The additional geometry information can handily support collision
+              and other physical calculation for game engines. For example, their bounding boxes can then be computed to construct the acceleration data structure for collisions.</p>
+            <p><strong>Warning</strong> : this assignment option requires more effort than the ray marching option. The two base codes diverge significantly, so switching options midway can be costly for your time and effort.</p>
+            <h2 id="resources">Resources</h2>
+            <p>We suggest reading the following resources before starting your assignment:</p>
+            <ul>
+              <li>
+                <a href="https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch01.html">Generating complex terrain</a>  from
+                <a href="https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_pref01.html">GPU Gems 3</a> .</li>
+              <li> <a href="http://paulbourke.net/geometry/polygonise/">Polygonising a scalar field</a>  by Paul Bourke. </li>
+              <li> <a href="http://jamie-wong.com/2014/08/19/metaballs-and-marching-squares/">Marching squares</a>  by Jamie Wong. </li>
+            </ul>
+            <h2 id="base-code-framework">Base code framework</h2>
+            <p>We have provided a basecode as a reference. You are welcome to modify the framework for your project. The basecode implements metaballs on the CPU.</p>
+            <p><em>main.js</em> :</p>
+            <ul>
+              <li><code>App</code>:</li>
+            </ul>
+            <p>This is a global configuration object. All information for the marching cubes are stored here. </p>
+            <p><strong>Note</strong> : <code>App.visualDebug</code> is a global control of all the visual debugging components. Even though it is helpful for development, it could be memory intensive. Toggle this flag off for better perforamance at high resolution.</p>
+            <p>_marching<em>cubes.js</em> :</p>
+            <ul>
+              <li>
+                <p><code>class MarchingCubes</code>: This class encapsulates everything about the metaballs, grid, voxels, and sampling information.</p>
+              </li>
+              <li>
+                <p><code>class Voxel</code>: This class contains information about a single voxel, and its sample points. Polygonization happens here.</p>
+              </li>
+            </ul>
+            <p>_inspect<em>point.js</em> :</p>
+            <ul>
+              <li><code>class InspectPoint</code>: This class simply contains a single sample point that can output its value on the screen at its pixel location.</li>
+            </ul>
+            <p><em>metaball.js</em> :</p>
+            <ul>
+              <li><code>class Metaball</code>: This class represents a single metaball.</li>
+            </ul>
+            <p>_marching_cube<em>LUT.js</em> :</p>
+            <p>This file contains the edge table and the triangle table for the marching cubes.</p>
+            <h2 id="animate-metaballs-5-points-">Animate metaballs (5 points)</h2>
+            <p>Implement the <code>update</code> for metaballs to move its position based velocity. Reverse the velocity whenever the metaball goes out of bounds. Since the metaball function is not well defined at the boundaries, maintain an additional small
+              margin so that the metaball can reverse its moving direction before reaching the bounds.</p>
+            <h2 id="metaball-function-2-points-">Metaball function (2 points)</h2>
+            <p>Implement the metaball function inside <code>sample</code> of <code>MarchingCubes</code>. This function should return the total influences of all moving metaballs with respect to a given point.</p>
+            <h2 id="sampling-at-corners-15-points-">Sampling at corners (15 points)</h2>
+            <p>In order to polygonize a voxel, generate new samples at each corner of the voxel. Their isovalues must be updated as the metaball function changes due of metaballs moving.</p>
+            <h2 id="polygonization-50-points-">Polygonization (50 points)</h2>
+            <p>Implement <code>polygonize</code> inside <code>Cell</code> class. This function should return the list of <strong>vertices</strong>  and <strong>normals</strong>  of the triangles polygonized in the voxel. </p>
+            <h3 id="vertices-30-points-out-of-50-">Vertices (30 points out of 50)</h3>
+            <p>To compute the vertices, we have provided the look-up tables from Paul Bourke&#39;s. The table assumes the following indexing scheme:
+              <img src="./assets/ref_voxel_indexing-62ba4e.png" alt="">
+            </p>
+            <ul>
+              <li><em>The eight corners can be represented as an 8-bit number, where 1 means the isovalue is above or below the isolevel based on your implementation.</em> </li>
+              <li>
+                <p><em>The twelve edges can be represented as a 12-bit number, where 1 means that the isosurface intersects with this edge.</em> </p>
+              </li>
+              <li>
+                <p><strong>EDGE_TABLE</strong> : This table returns a 12-bit number that represents the edges intersected by the isosurface. For each intersected edge, compute the linearly interpolated vertex position on the edge according to the isovalue
+                  at each end corner of the edge.</p>
+              </li>
+              <li>
+                <p><strong>TRI_TABLE</strong> : This table acts as the triangle indices. Every 16 elements in the table represents a possible polygonizing configuration. Within each configuration, every three consecutive elements represents the indices of
+                  a triangle that should be created from the edges above. </p>
+              </li>
+            </ul>
+            <h3 id="normals-20-points-out-of-50-">Normals (20 points out of 50)</h3>
+            <p>Compute the normals using the gradient of the vertex with respect to the x, y, and z. The normals are then used for shading different materials.</p>
+            <h2 id="meshing-18-points-">Meshing (18 points)</h2>
+            <p>The mesh for the metaball&#39;s isosurface should be created once. At each frame, using the list of <strong>vertices</strong>  and <strong>normals</strong>  polygonized from the voxels, update the mesh&#39;s geometry for the isosurface. Notice
+              that the total volume of the mesh does change.</p>
+            <h2 id="materials-and-post-processing-10-points-">Materials and post-processing (10 points)</h2>
+            <p>Interesting shader materials beyond just the provided threejs materials. We encourage using your previous shaders assignment for this part.</p>
+            <h2 id="extra-credits-up-to-30-points-">Extra credits (Up to 30 points)</h2>
+            <ul>
+              <li>Metaball can be positive or negative. A negative metaball will substract from the surface, which pushed the surface inward. <strong>Implement a scene with both positive and negative metaballs. (10 points)</strong> </li>
+              <li><strong>More implicit surfaces!</strong>  For example: planes, mesh, etc.). Some very interesting ideas are to blend your metaballs into those surfaces. <strong>(5 points for each)</strong> </li>
+            </ul>
+            <h2 id="submission">Submission</h2>
+            <ul>
+              <li>Update <code>README.md</code> to contain a solid description of your project</li>
+              <li>Publish your project to gh-pages. <code>npm run deploy</code>. It should now be visible at
+                <a href="http://username.github.io/repo-name">http://username.github.io/repo-name</a> 
+              </li>
+              <li>Create a
+                <a href="https://help.github.com/articles/creating-a-pull-request/">pull request</a>  to this repository, and in the comment, include a link to your published project.</li>
+              <li>Submit the link to your pull request on Canvas.</li>
+            </ul>
+            <h2 id="deploy">Deploy</h2>
+            <ul>
+              <li><code>npm run build</code></li>
+              <li>Add and commit all changes</li>
+              <li><code>npm run deploy</code></li>
+              <li>If you&#39;re having problems with assets not linking correctly, make sure you wrap you&#39;re filepaths in <code>require()</code>. This will make the bundler package and your static assets as well. So, instead of <code>loadTexture(&#39;./images/thing.bmp&#39;)</code>,
+                do <code>loadTexture(require(&#39;./images/thing.bmp&#39;))</code>.</li>
+            </ul>
+          </div>
+        </main>
+      </div>
+    </div>
+    <body>
+      <footer>
+        <script>
+          (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+              (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+              m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+          })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+          ga('create', 'UA-91822551-1', 'auto');
+          ga('send', 'pageview');
+        </script>
+      </footer>
+</html>

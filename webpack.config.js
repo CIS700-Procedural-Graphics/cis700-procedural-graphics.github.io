@@ -36,7 +36,11 @@ module.exports = {
       {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
         loader: 'file?name=fonts/[name].[ext]'
-      } 
+      },
+      {
+        test: /\.(obj|bmp|gif|png)$/,
+        loader: 'file-loader?name=./assets/[name]-[hash:6].[ext]'
+      }
     ]
   },
   plugins: [
