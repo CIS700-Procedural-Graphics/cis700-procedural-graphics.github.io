@@ -56,9 +56,9 @@
             <ul>
               <li>Tone mapping:
                 <ul>
-                  <li>Linear (+5 points)</li>
-                  <li>Reinhard (+5 points)</li>
-                  <li>Filmic (+5 points)</li>
+                  <li>Linear (5 points)</li>
+                  <li>Reinhard (5 points)</li>
+                  <li>Filmic (5 points)</li>
                 </ul>
               </li>
               <li>Gaussian blur (no double counting with Bloom)</li>
@@ -72,23 +72,26 @@
               <li>Bloom</li>
               <li>Noise Warp</li>
               <li>Hatching</li>
+              <li>Edge detection with Sobel filtering</li>
               <li>Lit Sphere (
                 <a href="http://www.ppsloan.org/publications/LitSphere.pdf">paper</a> )</li>
+              <li>Uncharted 2 customizable filmic curve, following John Hable’s presetantion.
+                <ul>
+                  <li>Without Linear, Reinhard, filmic (10 points)</li>
+                  <li>With all of linear, Reinhard, filmic (10 points)</li>
+                  <li>Customizable via GUI: (5 points total)
+                    <ul>
+                      <li>Controlling Exposure </li>
+                      <li>Side by side comparison between linear, Reinhard, filmic, and Uncharted2 .</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
             </ul>
             <h3 id="37-5-points-each-">37.5 points each:</h3>
             <ul>
               <li>K-means color compression (unless you are extremely clever, the k-means clusterer has to be CPU side)</li>
               <li>Dithering</li>
-              <li>Edge detection with Sobel filtering</li>
-              <li>Uncharted 2 customizable filmic curve, following John Hable’s presetantion.
-                <ul>
-                  <li>Without Linear, Reinhard, filmic (+10 points)</li>
-                  <li>With all of linear, Reinhard, filmic (+10 points)</li>
-                  <li>Customizable via GUI (+17.5 points)</li>
-                  <li>Controlling Exposure (4 points)</li>
-                  <li>Side by side comparison between linear, Reinhard, filmic, and Uncharted2 (13.5 points). </li>
-                </ul>
-              </li>
             </ul>
             <h3 id="5-points-interactivity">5 points - Interactivity</h3>
             <p>Implement a dropdown GUI to select different shader effects from your list.</p>
