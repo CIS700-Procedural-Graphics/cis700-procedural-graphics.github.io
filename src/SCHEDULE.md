@@ -9,6 +9,9 @@ All office hours will occur in the SIG lab. On Fridays, please feel free to join
 
 # Schedule
 
+### 2/28/2017 - Dynamics
+- [Dynamics](/files/dynamics_2_28_17.pdf)
+
 ### 2/21/2017 - Implicit Surfaces
 - [Implicit Surfaces](/files/implicit_surfaces_2_21_17.pdf)
 
