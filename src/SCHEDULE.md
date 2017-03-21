@@ -9,6 +9,9 @@ All office hours will occur in the SIG lab. On Fridays, please feel free to join
 
 # Schedule
 
+### 3/21/2017 - BioCrowds
+- [BioCrowds in a Shader](/files/biocrowds_3_21_17.pdf)
+
 ### 2/28/2017 - Dynamics
 - [Dynamics](/files/dynamics_2_28_17.pdf)
 
