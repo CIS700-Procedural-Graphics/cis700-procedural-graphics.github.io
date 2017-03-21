@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+  </head>
+  <body>
+    <div id="root">
+      <div>
+        <nav class="navbar navbar-inverse">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>   <span class="icon-bar"></span> </button>
+              <a class="navbar-brand" href="/">CIS700 Procedural Graphics</a> 
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li> <a href="/syllabus">Syllabus</a>  </li>
+                <li> <a href="/schedule">Schedule</a>  </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments  <span class="caret"></span>  </a> 
+                  <ul class="dropdown-menu">
+                    <li> <a href="/assignments/proj1-noise">Project 1: Noise</a>  </li>
+                    <li> <a href="/assignments/proj2-toolbox-functions">Project 2: Toolbox Functions</a>  </li>
+                    <li> <a href="/assignments/proj3-l-systems">Project 3: L-Systems</a>  </li>
+                    <li> <a href="/assignments/proj4-shape-grammar">Project 4: Shape Grammar</a>  </li>
+                    <li> <a href="/assignments/proj5-shaders">Project 5: Shaders</a>  </li>
+                    <li> <a href="/assignments/proj6-marchingcubes">Project 6: Marching Cubes</a>  </li>
+                    <li> <a href="/assignments/proj6-raymarching">Project 6: Ray Marching</a>  </li>
+                    <li> <a href="/assignments/proj7-biocrowds">Project 7: BioCrowds</a>  </li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources  <span class="caret"></span>  </a> 
+                  <ul class="dropdown-menu">
+                    <li> <a href="/resources/javascript-basics">Javascript Basics</a>  </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main class="container">
+          <div class="markdown-page">
+            <h1 id="biocrowds">BioCrowds</h1>
+            <p>Biocrowds is a crowd simulation algorithm based on the formation of veination patterns on leaves. It prevents agents from colliding with each other on their way to their goal points using a notion of &quot;personal space&quot;. Personal space
+              is modelled with a space colonization algorithm. Markers (just points) are scattered throughout the simulation space, on the ground. At each simulation frame, each marker becomes &quot;owned&quot; by the agent closest to it (with some max
+              distance representing an agent&#39;s perception). Agent velocity at the next frame is then computed using a sum of the displacement vectors to each of its markers. Because a marker can only be owned by one agent at a time, this technique
+              prevents agents from colliding.</p>
+            <h2 id="agent-representation-15-pts-">Agent Representation (15 pts)</h2>
+            <p>Create an agent class to hold properties used for simulating and drawing the agent. Some properties you may want to consider include the following:</p>
+            <ul>
+              <li>Position</li>
+              <li>Velocity</li>
+              <li>Goal</li>
+              <li>Orientation</li>
+              <li>Size</li>
+              <li>Markers</li>
+            </ul>
+            <h2 id="grid-marker-representation-25-pts-">Grid/Marker Representation (25 pts)</h2>
+            <p>Markers should be scattered randomly across a uniform grid. You should implement an efficient way of determining the nearest agent to a given marker. Based on an marker&#39;s location, you should be able to get the nearest four grid cells
+              and loop through all the agents contained in them.</p>
+            <h2 id="setup-10-pts-">Setup (10 pts)</h2>
+            <ul>
+              <li>Create a scene (standard, with camera controls) and scatter markers across the entire ground plane</li>
+              <li>Spawn agents with specified goal points</li>
+            </ul>
+            <h2 id="per-frame-35-pts-">Per Frame (35 pts)</h2>
+            <ul>
+              <li>Assign markers to the nearest agent within a given radius. Be sure that a marker is only assigned to a single, unique agent.</li>
+              <li>Compute velocity for each agent</li>
+              <li>New velocity is determined by summing contributions from all the markers the agent &quot;owns&quot;. Each marker contribution consists of the displacement vector between the agent and the marker multiplied by some (non-negative) weight.
+                The weighting is based on
+                <ul>
+                  <li>Similarity between the displacement vector and the vector to agent&#39;s goal (the more similar, the higher the weight. A dot product works well)</li>
+                  <li>Distance from agent (the further away, the less contribution) Each contribution is normalized by the total marker contributions (divide each contribution by sum total)
+                    <ul>
+                      <li>Clamp velocity to some maximum (you probably want to choose a max speed such that you agent will never move further than its marker radius)</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>Move agents by their newly computed velocity * time step</li>
+              <li>Draw a ground plane and cylinders to represent the agents.</li>
+              <li>For a more thorough explanation, see
+                <a href="http://www.inf.pucrs.br/~smusse/Animacao/2016/CrowdTalk.pdf">HERE</a>  and
+                <a href="http://www.sciencedirect.com/science/article/pii/S0097849311001713">HERE</a>  and
+                <a href="https://books.google.com/books?id=3Adh_2ZNGLAC&amp;pg=PA146&amp;lpg=PA146&amp;dq=biocrowds%20algorithm&amp;source=bl&amp;ots=zsM86iYTot&amp;sig=KQJU7_NagMK4rbpY0oYc3bwCh9o&amp;hl=en&amp;sa=X&amp;ved=0ahUKEwik9JfPnubSAhXIxVQKHUybCxUQ6AEILzAE#v=onepage&amp;q=biocrowds%20algorithm&amp;f=false">HERE</a> 
+              </li>
+            </ul>
+            <h2 id="two-scenarios">Two scenarios</h2>
+            <ul>
+              <li>Create two different scenarios (initial agent placement, goals) to show off the collision avoidance. Try to pick something interesting! Classics include two opposing lines of agents with goals on opposite sides, or agents that spawn in a
+                circle, which each agent&#39;s goal directly across.</li>
+              <li>Provide some way to switch between scenarios</li>
+            </ul>
+            <h2 id="deploy-your-code-5-pts-">Deploy your code! (5 pts)</h2>
+            <ul>
+              <li>Your demo should run on your gh-pages branch</li>
+            </ul>
+            <h2 id="extra-credit">Extra credit</h2>
+            <ul>
+              <li>Add obstacles to your scene, such that agents avoid them</li>
+            </ul>
+          </div>
+        </main>
+      </div>
+    </div>
+    <body>
+      <footer>
+        <script>
+          (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+              (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+              m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+          })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+          ga('create', 'UA-91822551-1', 'auto');
+          ga('send', 'pageview');
+        </script>
+      </footer>
+</html>
