@@ -19,6 +19,7 @@ var routes = (
       <Route path="proj5-shaders" component={() => (<MD md={require("../../hw/shaders/base/README.md")} />)} />
       <Route path="proj6-marchingcubes" component={() => (<MD md={require("../../hw/metaballs/base/README.md")} />)} />
       <Route path="proj6-raymarching" component={() => (<MD md={require("../../hw/metaballs2/base/README.md")} />)} />
+      <Route path="proj7-biocrowds" component={() => (<MD md={require("../../hw/biocrowds/base/README.md")} />)} />
     </Route>
   </Router>
 )
