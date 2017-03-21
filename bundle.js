@@ -68,7 +68,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _pretty = __webpack_require__(250);
+	var _pretty = __webpack_require__(249);
 
 	var _pretty2 = _interopRequireDefault(_pretty);
 
@@ -7282,11 +7282,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 	var useQueries = function useQueries(createHistory) {
 	  return function () {
-	    var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 	    var history = createHistory(options);
-	    var stringifyQuery = options.stringifyQuery;
-	    var parseQueryString = options.parseQueryString;
+	    var stringifyQuery = options.stringifyQuery,
+	        parseQueryString = options.parseQueryString;
 
 
 	    if (typeof stringifyQuery !== 'function') stringifyQuery = defaultStringifyQuery;
@@ -7426,9 +7426,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		switch (opts.arrayFormat) {
 			case 'index':
 				return function (key, value, accumulator) {
-					result = /\[(\d*)]$/.exec(key);
+					result = /\[(\d*)\]$/.exec(key);
 
-					key = key.replace(/\[\d*]$/, '');
+					key = key.replace(/\[\d*\]$/, '');
 
 					if (!result) {
 						accumulator[key] = value;
@@ -7444,9 +7444,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			case 'bracket':
 				return function (key, value, accumulator) {
-					result = /(\[])$/.exec(key);
+					result = /(\[\])$/.exec(key);
 
-					key = key.replace(/\[]$/, '');
+					key = key.replace(/\[\]$/, '');
 
 					if (!result || accumulator[key] === undefined) {
 						accumulator[key] = value;
@@ -7633,7 +7633,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.__esModule = true;
 	exports.locationsAreEqual = exports.statesAreEqual = exports.createLocation = exports.createQuery = undefined;
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -7656,9 +7656,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	var createLocation = exports.createLocation = function createLocation() {
-	  var input = arguments.length <= 0 || arguments[0] === undefined ? '/' : arguments[0];
-	  var action = arguments.length <= 1 || arguments[1] === undefined ? _Actions.POP : arguments[1];
-	  var key = arguments.length <= 2 || arguments[2] === undefined ? null : arguments[2];
+	  var input = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/';
+	  var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _Actions.POP;
+	  var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
 
 	  var object = typeof input === 'string' ? (0, _PathUtils.parsePath)(input) : input;
 
@@ -7738,12 +7738,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var addQueryStringValueToPath = exports.addQueryStringValueToPath = function addQueryStringValueToPath(path, key, value) {
-	  var _parsePath = parsePath(path);
-
-	  var pathname = _parsePath.pathname;
-	  var search = _parsePath.search;
-	  var hash = _parsePath.hash;
-
+	  var _parsePath = parsePath(path),
+	      pathname = _parsePath.pathname,
+	      search = _parsePath.search,
+	      hash = _parsePath.hash;
 
 	  return createPath({
 	    pathname: pathname,
@@ -7753,12 +7751,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	var stripQueryStringValueFromPath = exports.stripQueryStringValueFromPath = function stripQueryStringValueFromPath(path, key) {
-	  var _parsePath2 = parsePath(path);
-
-	  var pathname = _parsePath2.pathname;
-	  var search = _parsePath2.search;
-	  var hash = _parsePath2.hash;
-
+	  var _parsePath2 = parsePath(path),
+	      pathname = _parsePath2.pathname,
+	      search = _parsePath2.search,
+	      hash = _parsePath2.hash;
 
 	  return createPath({
 	    pathname: pathname,
@@ -7770,9 +7766,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	var getQueryStringValueFromPath = exports.getQueryStringValueFromPath = function getQueryStringValueFromPath(path, key) {
-	  var _parsePath3 = parsePath(path);
-
-	  var search = _parsePath3.search;
+	  var _parsePath3 = parsePath(path),
+	      search = _parsePath3.search;
 
 	  var match = search.match(new RegExp('[?&]' + key + '=([a-zA-Z0-9]+)'));
 	  return match && match[1];
@@ -7814,10 +7809,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var createPath = exports.createPath = function createPath(location) {
 	  if (location == null || typeof location === 'string') return location;
 
-	  var basename = location.basename;
-	  var pathname = location.pathname;
-	  var search = location.search;
-	  var hash = location.hash;
+	  var basename = location.basename,
+	      pathname = location.pathname,
+	      search = location.search,
+	      hash = location.hash;
 
 	  var path = (basename || '') + pathname;
 
@@ -7849,7 +7844,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var useBasename = function useBasename(createHistory) {
 	  return function () {
-	    var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 	    var history = createHistory(options);
 	    var basename = options.basename;
@@ -7859,7 +7854,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (!location) return location;
 
 	      if (basename && location.basename == null) {
-	        if (location.pathname.indexOf(basename) === 0) {
+	        if (location.pathname.toLowerCase().indexOf(basename.toLowerCase()) === 0) {
 	          location.pathname = location.pathname.substring(basename.length);
 	          location.basename = basename;
 
@@ -7983,7 +7978,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	var createMemoryHistory = function createMemoryHistory() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 	  if (Array.isArray(options)) {
 	    options = { entries: options };
@@ -8050,9 +8045,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    go: go
 	  }));
 
-	  var _options = options;
-	  var entries = _options.entries;
-	  var current = _options.current;
+	  var _options = options,
+	      entries = _options.entries,
+	      current = _options.current;
 
 
 	  if (typeof entries === 'string') {
@@ -8112,13 +8107,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var createHistory = function createHistory() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-	  var getCurrentLocation = options.getCurrentLocation;
-	  var getUserConfirmation = options.getUserConfirmation;
-	  var pushLocation = options.pushLocation;
-	  var replaceLocation = options.replaceLocation;
-	  var go = options.go;
-	  var keyLength = options.keyLength;
+	  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	  var getCurrentLocation = options.getCurrentLocation,
+	      getUserConfirmation = options.getUserConfirmation,
+	      pushLocation = options.pushLocation,
+	      replaceLocation = options.replaceLocation,
+	      go = options.go,
+	      keyLength = options.keyLength;
 
 
 	  var currentLocation = void 0;
@@ -8247,7 +8242,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 
 	  var createLocation = function createLocation(location, action) {
-	    var key = arguments.length <= 2 || arguments[2] === undefined ? createKey() : arguments[2];
+	    var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : createKey();
 	    return (0, _LocationUtils.createLocation)(location, action, key);
 	  };
 
@@ -8487,18 +8482,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * behavior using { forceRefresh: true } in options.
 	 */
 	var createBrowserHistory = function createBrowserHistory() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 	  !_ExecutionEnvironment.canUseDOM ? process.env.NODE_ENV !== 'production' ? (0, _invariant2.default)(false, 'Browser history needs a DOM') : (0, _invariant2.default)(false) : void 0;
 
 	  var useRefresh = options.forceRefresh || !(0, _DOMUtils.supportsHistory)();
 	  var Protocol = useRefresh ? RefreshProtocol : BrowserProtocol;
 
-	  var getUserConfirmation = Protocol.getUserConfirmation;
-	  var getCurrentLocation = Protocol.getCurrentLocation;
-	  var pushLocation = Protocol.pushLocation;
-	  var replaceLocation = Protocol.replaceLocation;
-	  var go = Protocol.go;
+	  var getUserConfirmation = Protocol.getUserConfirmation,
+	      getCurrentLocation = Protocol.getCurrentLocation,
+	      pushLocation = Protocol.pushLocation,
+	      replaceLocation = Protocol.replaceLocation,
+	      go = Protocol.go;
 
 
 	  var history = (0, _createHistory2.default)(_extends({
@@ -8604,8 +8599,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var startListener = exports.startListener = function startListener(listener) {
 	  var handlePopState = function handlePopState(event) {
-	    if (event.state !== undefined) // Ignore extraneous popstate events in WebKit
-	      listener(_createLocation(event.state));
+	    if ((0, _DOMUtils.isExtraneousPopstateEvent)(event)) // Ignore extraneous popstate events in WebKit
+	      return;
+	    listener(_createLocation(event.state));
 	  };
 
 	  (0, _DOMUtils.addEventListener)(window, PopStateEvent, handlePopState);
@@ -8628,8 +8624,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	var updateLocation = function updateLocation(location, updateState) {
-	  var state = location.state;
-	  var key = location.key;
+	  var state = location.state,
+	      key = location.key;
 
 
 	  if (state !== undefined) (0, _DOMStateStorage.saveState)(key, state);
@@ -8696,6 +8692,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 	var supportsPopstateOnHashchange = exports.supportsPopstateOnHashchange = function supportsPopstateOnHashchange() {
 	  return window.navigator.userAgent.indexOf('Trident') === -1;
+	};
+
+	/**
+	 * Returns true if a given popstate event is an extraneous WebKit event.
+	 * Accounts for the fact that Chrome on iOS fires real popstate events
+	 * containing undefined state when pressing the back button.
+	 */
+	var isExtraneousPopstateEvent = exports.isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
+	  return event.state === undefined && navigator.userAgent.indexOf('CriOS') === -1;
 	};
 
 /***/ },
@@ -8938,12 +8943,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	var createHashHistory = function createHashHistory() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 	  !_ExecutionEnvironment.canUseDOM ? process.env.NODE_ENV !== 'production' ? (0, _invariant2.default)(false, 'Hash history needs a DOM') : (0, _invariant2.default)(false) : void 0;
 
-	  var queryKey = options.queryKey;
-	  var hashType = options.hashType;
+	  var queryKey = options.queryKey,
+	      hashType = options.hashType;
 
 
 	  process.env.NODE_ENV !== 'production' ? (0, _warning2.default)(queryKey !== false, 'Using { queryKey: false } no longer works. Instead, just don\'t ' + 'use location state if you don\'t want a key in your URL query string') : void 0;
@@ -9138,8 +9143,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	var updateLocation = function updateLocation(location, pathCoder, queryKey, updateHash) {
-	  var state = location.state;
-	  var key = location.key;
+	  var state = location.state,
+	      key = location.key;
 
 
 	  var path = pathCoder.encodePath((0, _PathUtils.createPath)(location));
@@ -25701,10 +25706,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return _react2.default.createElement(_MD2.default, { md: __webpack_require__(246) });
 	      } }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'proj6-raymarching', component: function component() {
-	        return _react2.default.createElement(_MD2.default, { md: __webpack_require__(248) });
+	        return _react2.default.createElement(_MD2.default, { md: __webpack_require__(247) });
 	      } }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'proj7-biocrowds', component: function component() {
-	        return _react2.default.createElement(_MD2.default, { md: __webpack_require__(249) });
+	        return _react2.default.createElement(_MD2.default, { md: __webpack_require__(248) });
 	      } })
 	  )
 	);
@@ -26055,28 +26060,22 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<h1 id=\"project-6-implicit-surfaces-marching-cubes\">Project 6: Implicit surfaces - Marching cubes</h1>\n<p><strong>Goal:</strong> Implement an isosurface created from metaballs using the marching cubes algorithm. </p>\n<p>Metaballs are organic-looking n-dimensional objects. We will be implementing a 3-dimensional metaballs. They are great to make bloppy shapes. An isosurface is created whenever the metaball function crosses a certain threshold, called isolevel. The metaball function describes the total influences of each metaball to a given points. A metaball influence is a function between its radius and distance to the point:</p>\n<p><code>f(point) = (radius * radius) / (distance * distance)</code></p>\n<p>By summing up all these influences, you effectively describes all the points that are greater than the isolevel as inside, and less than the isolevel as outside (or vice versa). As an observation, the bigger the metaball&#39;s radius is, the bigger its influence is.</p>\n<p>Marching cubes essentially voxelize the space, then generate triangles based on the density function distribution at the corners of each voxel. By increasing the voxelized grid&#39;s resolution, the surface eventually gets that blobby, organic look of the metaballs. Marching cubes can achieve a similar effect to ray marching for rendering implicit surfaces, but in addition to the rendered image, you also retain actual geometries. </p>\n<p>Marching cubes are commonly used in MRI scanning, where you can generate geometries for the scans. Marching cubes are also used to generate complex terrains with caves in games. The additional geometry information can handily support collision and other physical calculation for game engines. For example, their bounding boxes can then be computed to construct the acceleration data structure for collisions.</p>\n<p><strong>Warning</strong>: this assignment option requires more effort than the ray marching option. The two base codes diverge significantly, so switching options midway can be costly for  your time and effort.</p>\n<h2 id=\"resources\">Resources</h2>\n<p>We suggest reading the following resources before starting your assignment:</p>\n<ul>\n<li><a href=\"https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch01.html\">Generating complex terrain</a> from <a href=\"https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_pref01.html\">GPU Gems 3</a>.</li>\n<li><a href=\"http://paulbourke.net/geometry/polygonise/\">Polygonising a scalar field</a> by Paul Bourke.</li>\n<li><a href=\"http://jamie-wong.com/2014/08/19/metaballs-and-marching-squares/\">Marching squares</a> by Jamie Wong.</li>\n</ul>\n<h2 id=\"base-code-framework\">Base code framework</h2>\n<p>We have provided a basecode as a reference. You are welcome to modify the framework for your project. The basecode implements metaballs on the CPU.</p>\n<p><em>main.js</em>:</p>\n<ul>\n<li><code>App</code>:</li>\n</ul>\n<p>This is a global configuration object. All information for the marching cubes are stored here. </p>\n<p><strong>Note</strong>: <code>App.visualDebug</code> is a global control of all the visual debugging components. Even though it is helpful for development, it could be memory intensive. Toggle this flag off for better perforamance at high resolution.</p>\n<p>_marching<em>cubes.js</em>:</p>\n<ul>\n<li><p><code>class MarchingCubes</code>:\nThis class encapsulates everything about the metaballs, grid, voxels, and sampling information.</p>\n</li>\n<li><p><code>class Voxel</code>:\nThis class contains information about a single voxel, and its sample points. Polygonization happens here.</p>\n</li>\n</ul>\n<p>_inspect<em>point.js</em>:</p>\n<ul>\n<li><code>class InspectPoint</code>:\nThis class simply contains a single sample point that can output its value on the screen at its pixel location.</li>\n</ul>\n<p><em>metaball.js</em>:</p>\n<ul>\n<li><code>class Metaball</code>:\nThis class represents a single metaball.</li>\n</ul>\n<p>_marching_cube<em>LUT.js</em>:</p>\n<p>This file contains the edge table and the triangle table for the marching cubes.</p>\n<h2 id=\"animate-metaballs-5-points-\">Animate metaballs (5 points)</h2>\n<p>Implement the <code>update</code> for metaballs to move its position based velocity. Reverse the velocity whenever the metaball goes out of bounds. Since the metaball function is not well defined at the boundaries, maintain an additional small margin so that the metaball can reverse its moving direction before reaching the bounds.</p>\n<h2 id=\"metaball-function-2-points-\">Metaball function (2 points)</h2>\n<p>Implement the metaball function inside <code>sample</code> of <code>MarchingCubes</code>. This function should return the total influences of all moving metaballs with respect to a given point.</p>\n<h2 id=\"sampling-at-corners-15-points-\">Sampling at corners (15 points)</h2>\n<p>In order to polygonize a voxel, generate new samples at each corner of the voxel. Their isovalues must be updated as the metaball function changes due of metaballs moving.</p>\n<h2 id=\"polygonization-50-points-\">Polygonization (50 points)</h2>\n<p>Implement <code>polygonize</code> inside <code>Cell</code> class. This function should return the list of <strong>vertices</strong> and <strong>normals</strong> of the triangles polygonized in the voxel. </p>\n<h3 id=\"vertices-30-points-out-of-50-\">Vertices (30 points out of 50)</h3>\n<p>To compute the vertices, we have provided the look-up tables from Paul Bourke&#39;s. The table assumes the following indexing scheme:\n<img src=\"" + __webpack_require__(247) + "\" alt=\"\"></p>\n<ul>\n<li><em>The eight corners can be represented as an 8-bit number, where 1 means the isovalue is above or below the isolevel based on your implementation.</em></li>\n<li><p><em>The twelve edges can be represented as a 12-bit number, where 1 means that the isosurface intersects with this edge.</em></p>\n</li>\n<li><p><strong>EDGE_TABLE</strong>: This table returns a 12-bit number that represents the edges intersected by the isosurface. For each intersected edge, compute the linearly interpolated vertex position on the edge according to the isovalue at each end corner of the edge.</p>\n</li>\n<li><p><strong>TRI_TABLE</strong>: This table acts as the triangle indices. Every 16 elements in the table represents a possible polygonizing configuration. Within each configuration, every three consecutive elements represents the indices of a triangle that should be created from the edges above. </p>\n</li>\n</ul>\n<h3 id=\"normals-20-points-out-of-50-\">Normals (20 points out of 50)</h3>\n<p>Compute the normals using the gradient of the vertex with respect to the x, y, and z. The normals are then used for shading different materials.</p>\n<h2 id=\"meshing-18-points-\">Meshing (18 points)</h2>\n<p>The mesh for the metaball&#39;s isosurface should be created once. At each frame, using the list of <strong>vertices</strong> and <strong>normals</strong> polygonized from the voxels, update the mesh&#39;s geometry for the isosurface. Notice that the total volume of the mesh does change.</p>\n<h2 id=\"materials-and-post-processing-10-points-\">Materials and post-processing (10 points)</h2>\n<p>Interesting shader materials beyond just the provided threejs materials. We encourage using your previous shaders assignment for this part.</p>\n<h2 id=\"extra-credits-up-to-30-points-\">Extra credits (Up to 30 points)</h2>\n<ul>\n<li>Metaball can be positive or negative. A negative metaball will substract from the surface, which pushed the surface inward. <strong>Implement a scene with both positive and negative metaballs. (10 points)</strong></li>\n<li><strong>More implicit surfaces!</strong> For example: planes, mesh, etc.). Some very interesting ideas are to blend your metaballs into those surfaces. <strong>(5 points for each)</strong></li>\n</ul>\n<h2 id=\"submission\">Submission</h2>\n<ul>\n<li>Update <code>README.md</code> to contain a solid description of your project</li>\n<li>Publish your project to gh-pages. <code>npm run deploy</code>. It should now be visible at <a href=\"http://username.github.io/repo-name\">http://username.github.io/repo-name</a></li>\n<li>Create a <a href=\"https://help.github.com/articles/creating-a-pull-request/\">pull request</a> to this repository, and in the comment, include a link to your published project.</li>\n<li>Submit the link to your pull request on Canvas.</li>\n</ul>\n<h2 id=\"deploy\">Deploy</h2>\n<ul>\n<li><code>npm run build</code></li>\n<li>Add and commit all changes</li>\n<li><code>npm run deploy</code></li>\n<li>If you&#39;re having problems with assets not linking correctly, make sure you wrap you&#39;re filepaths in <code>require()</code>. This will make the bundler package and your static assets as well. So, instead of <code>loadTexture(&#39;./images/thing.bmp&#39;)</code>, do <code>loadTexture(require(&#39;./images/thing.bmp&#39;))</code>.</li>\n</ul>\n";
+	module.exports = "<h1 id=\"project-6-implicit-surfaces-marching-cubes\">Project 6: Implicit surfaces - Marching cubes</h1>\n<p><strong>Goal:</strong> Implement an isosurface created from metaballs using the marching cubes algorithm. </p>\n<p>Metaballs are organic-looking n-dimensional objects. We will be implementing a 3-dimensional metaballs. They are great to make bloppy shapes. An isosurface is created whenever the metaball function crosses a certain threshold, called isolevel. The metaball function describes the total influences of each metaball to a given points. A metaball influence is a function between its radius and distance to the point:</p>\n<p><code>f(point) = (radius * radius) / (distance * distance)</code></p>\n<p>By summing up all these influences, you effectively describes all the points that are greater than the isolevel as inside, and less than the isolevel as outside (or vice versa). As an observation, the bigger the metaball&#39;s radius is, the bigger its influence is.</p>\n<p>Marching cubes essentially voxelize the space, then generate triangles based on the density function distribution at the corners of each voxel. By increasing the voxelized grid&#39;s resolution, the surface eventually gets that blobby, organic look of the metaballs. Marching cubes can achieve a similar effect to ray marching for rendering implicit surfaces, but in addition to the rendered image, you also retain actual geometries. </p>\n<p>Marching cubes are commonly used in MRI scanning, where you can generate geometries for the scans. Marching cubes are also used to generate complex terrains with caves in games. The additional geometry information can handily support collision and other physical calculation for game engines. For example, their bounding boxes can then be computed to construct the acceleration data structure for collisions.</p>\n<p><strong>Warning</strong>: this assignment option requires more effort than the ray marching option. The two base codes diverge significantly, so switching options midway can be costly for  your time and effort.</p>\n<h2 id=\"resources\">Resources</h2>\n<p>We suggest reading the following resources before starting your assignment:</p>\n<ul>\n<li><a href=\"https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch01.html\">Generating complex terrain</a> from <a href=\"https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_pref01.html\">GPU Gems 3</a>.</li>\n<li><a href=\"http://paulbourke.net/geometry/polygonise/\">Polygonising a scalar field</a> by Paul Bourke.</li>\n<li><a href=\"http://jamie-wong.com/2014/08/19/metaballs-and-marching-squares/\">Marching squares</a> by Jamie Wong.</li>\n</ul>\n<h2 id=\"base-code-framework\">Base code framework</h2>\n<p>We have provided a basecode as a reference. You are welcome to modify the framework for your project. The basecode implements metaballs on the CPU.</p>\n<p><em>main.js</em>:</p>\n<ul>\n<li><code>App</code>:</li>\n</ul>\n<p>This is a global configuration object. All information for the marching cubes are stored here. </p>\n<p><strong>Note</strong>: <code>App.visualDebug</code> is a global control of all the visual debugging components. Even though it is helpful for development, it could be memory intensive. Toggle this flag off for better perforamance at high resolution.</p>\n<p>_marching<em>cubes.js</em>:</p>\n<ul>\n<li><p><code>class MarchingCubes</code>:\nThis class encapsulates everything about the metaballs, grid, voxels, and sampling information.</p>\n</li>\n<li><p><code>class Voxel</code>:\nThis class contains information about a single voxel, and its sample points. Polygonization happens here.</p>\n</li>\n</ul>\n<p>_inspect<em>point.js</em>:</p>\n<ul>\n<li><code>class InspectPoint</code>:\nThis class simply contains a single sample point that can output its value on the screen at its pixel location.</li>\n</ul>\n<p><em>metaball.js</em>:</p>\n<ul>\n<li><code>class Metaball</code>:\nThis class represents a single metaball.</li>\n</ul>\n<p>_marching_cube<em>LUT.js</em>:</p>\n<p>This file contains the edge table and the triangle table for the marching cubes.</p>\n<h2 id=\"animate-metaballs-5-points-\">Animate metaballs (5 points)</h2>\n<p>Implement the <code>update</code> for metaballs to move its position based velocity. Reverse the velocity whenever the metaball goes out of bounds. Since the metaball function is not well defined at the boundaries, maintain an additional small margin so that the metaball can reverse its moving direction before reaching the bounds.</p>\n<h2 id=\"metaball-function-2-points-\">Metaball function (2 points)</h2>\n<p>Implement the metaball function inside <code>sample</code> of <code>MarchingCubes</code>. This function should return the total influences of all moving metaballs with respect to a given point.</p>\n<h2 id=\"sampling-at-corners-15-points-\">Sampling at corners (15 points)</h2>\n<p>In order to polygonize a voxel, generate new samples at each corner of the voxel. Their isovalues must be updated as the metaball function changes due of metaballs moving.</p>\n<h2 id=\"polygonization-50-points-\">Polygonization (50 points)</h2>\n<p>Implement <code>polygonize</code> inside <code>Cell</code> class. This function should return the list of <strong>vertices</strong> and <strong>normals</strong> of the triangles polygonized in the voxel. </p>\n<h3 id=\"vertices-30-points-out-of-50-\">Vertices (30 points out of 50)</h3>\n<p>To compute the vertices, we have provided the look-up tables from Paul Bourke&#39;s. The table assumes the following indexing scheme:\n<img src=\"" + __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./ref_voxel_indexing.png\""); e.code = 'MODULE_NOT_FOUND'; throw e; }())) + "\" alt=\"\"></p>\n<ul>\n<li><em>The eight corners can be represented as an 8-bit number, where 1 means the isovalue is above or below the isolevel based on your implementation.</em></li>\n<li><p><em>The twelve edges can be represented as a 12-bit number, where 1 means that the isosurface intersects with this edge.</em></p>\n</li>\n<li><p><strong>EDGE_TABLE</strong>: This table returns a 12-bit number that represents the edges intersected by the isosurface. For each intersected edge, compute the linearly interpolated vertex position on the edge according to the isovalue at each end corner of the edge.</p>\n</li>\n<li><p><strong>TRI_TABLE</strong>: This table acts as the triangle indices. Every 16 elements in the table represents a possible polygonizing configuration. Within each configuration, every three consecutive elements represents the indices of a triangle that should be created from the edges above. </p>\n</li>\n</ul>\n<h3 id=\"normals-20-points-out-of-50-\">Normals (20 points out of 50)</h3>\n<p>Compute the normals using the gradient of the vertex with respect to the x, y, and z. The normals are then used for shading different materials.</p>\n<h2 id=\"meshing-18-points-\">Meshing (18 points)</h2>\n<p>The mesh for the metaball&#39;s isosurface should be created once. At each frame, using the list of <strong>vertices</strong> and <strong>normals</strong> polygonized from the voxels, update the mesh&#39;s geometry for the isosurface. Notice that the total volume of the mesh does change.</p>\n<h2 id=\"materials-and-post-processing-10-points-\">Materials and post-processing (10 points)</h2>\n<p>Interesting shader materials beyond just the provided threejs materials. We encourage using your previous shaders assignment for this part.</p>\n<h2 id=\"extra-credits-up-to-30-points-\">Extra credits (Up to 30 points)</h2>\n<ul>\n<li>Metaball can be positive or negative. A negative metaball will substract from the surface, which pushed the surface inward. <strong>Implement a scene with both positive and negative metaballs. (10 points)</strong></li>\n<li><strong>More implicit surfaces!</strong> For example: planes, mesh, etc.). Some very interesting ideas are to blend your metaballs into those surfaces. <strong>(5 points for each)</strong></li>\n</ul>\n<h2 id=\"submission\">Submission</h2>\n<ul>\n<li>Update <code>README.md</code> to contain a solid description of your project</li>\n<li>Publish your project to gh-pages. <code>npm run deploy</code>. It should now be visible at <a href=\"http://username.github.io/repo-name\">http://username.github.io/repo-name</a></li>\n<li>Create a <a href=\"https://help.github.com/articles/creating-a-pull-request/\">pull request</a> to this repository, and in the comment, include a link to your published project.</li>\n<li>Submit the link to your pull request on Canvas.</li>\n</ul>\n<h2 id=\"deploy\">Deploy</h2>\n<ul>\n<li><code>npm run build</code></li>\n<li>Add and commit all changes</li>\n<li><code>npm run deploy</code></li>\n<li>If you&#39;re having problems with assets not linking correctly, make sure you wrap you&#39;re filepaths in <code>require()</code>. This will make the bundler package and your static assets as well. So, instead of <code>loadTexture(&#39;./images/thing.bmp&#39;)</code>, do <code>loadTexture(require(&#39;./images/thing.bmp&#39;))</code>.</li>\n</ul>\n";
 
 /***/ },
 /* 247 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "./assets/ref_voxel_indexing-62ba4e.png";
-
-/***/ },
-/* 248 */
 /***/ function(module, exports) {
 
 	module.exports = "<h1 id=\"hw-6-ray-marching-and-sdfs\">HW 6: Ray marching and SDFs</h1>\n<h2 id=\"goal\">Goal</h2>\n<p>In this assignment, you will be implementing SDF operators on various primitives and use a ray marcher to render them. Ray marching is a technique for rendering implicit surfaces where the ray-primitive intersection equation cannot be solved analytically.</p>\n<p><strong>Warning</strong>: this assignment diverges significantly from marching cubes, so switching options midway can be costly for  your time and effort.</p>\n<h2 id=\"base-code-framework\">Base code framework</h2>\n<p>We have provided a preview scene, and a toggle for the ray marcher rendering. When you correctly implement the ray marcher, the image should match the preview scene containing the simple geometry. Your ray marching calculation should be performed in the fragment shader.</p>\n<h3 id=\"ray-marcher-25-pts-\">Ray Marcher (25 pts)</h3>\n<p>The ray marcher should generate a ray direction, and march through the scene using the distances computed from sphere tracing.</p>\n<p><strong>Note</strong>: Your scene won&#39;t be rendered until you have implemented the SDFs for primitives below. </p>\n<ul>\n<li>Generate Rays (15 pts): for each fragment inside the fragment shader, compute a ray direction for the ray marcher</li>\n<li>Sphere Tracing (10 pts): compute the nearest distance from the scene SDFs and update the ray marching&#39;s step size.</li>\n</ul>\n<h3 id=\"sdf-50-pts-\">SDF (50 pts)</h3>\n<h5 id=\"implement-primitive-sdfs-15pts-\">Implement primitive SDFs (15pts):</h5>\n<p>These are simple primitives with well-defined SDFs. We encourage trying other SDFs not listed here, they are interesting! </p>\n<ul>\n<li>Sphere (3pts)</li>\n<li>Box (3pts)</li>\n<li>Cone (3pts)</li>\n<li>Torus (3pts)</li>\n<li>Cylinder (3pts)</li>\n</ul>\n<h5 id=\"useful-operators-15pts-\">Useful Operators (15pts)</h5>\n<p>To create constructive geometry, and interesting shapes (such as holes, bumps, etc.), implement the following operators to combine your primitive SDFs.</p>\n<ul>\n<li>Intersection (2pts)</li>\n<li>Subtraction (3pts)</li>\n<li>Union (2pts)</li>\n<li>Transformation (8pts)<ul>\n<li>translation and scaling<h5 id=\"compute-normals-based-on-gradient-15-pts-\">Compute normals based on gradient (15 pts)</h5>\n</li>\n</ul>\n</li>\n</ul>\n<p>Compute the normals to use for shading your surface.</p>\n<ul>\n<li>Read Chapter 13 of <a href=\"http://graphics.cs.williams.edu/courses/cs371/f14/reading/implicit.pdf\">Morgan McGuire&#39;s notes</a> <h5 id=\"material-5pts-\">Material (5pts)</h5>\nImplement a simple Lambert material. Additional materials can earn extra points.</li>\n</ul>\n<h3 id=\"custom-scene-25-pts-\">Custom Scene (25 pts)</h3>\n<h5 id=\"create-a-mechanical-device-or-a-scene-of-your-choice-using-all-operators\">Create a mechanical device or a scene of your choice using all operators</h5>\n<ul>\n<li>intersection, subtraction, union, transformation (20pts)<h5 id=\"animate-the-scene-5pts-\">Animate the scene (5pts)</h5>\nUse time as an input to some of your functions to animate your scene!</li>\n</ul>\n<h2 id=\"extra-credits-up-to-30-pts-\">Extra credits (Up to 30 pts)</h2>\n<ul>\n<li>Implement SDF for <a href=\"https://www.shadertoy.com/view/XsXXWS\">Mandelbulb</a> (10pts)<ul>\n<li>You need to implement naive raymarching (not sphere tracing) to get this to work </li>\n</ul>\n</li>\n<li>Lighting effects <ul>\n<li>Soft shadowing using secondary rays (5pts)</li>\n<li>Ambient occlusion (10pts)</li>\n</ul>\n</li>\n<li>Additional materials besides Lambert. (5pts each)</li>\n<li>Additional SDFs besides the listed primitive. (5pts each)</li>\n</ul>\n<h2 id=\"resources\">Resources</h2>\n<p><a href=\"http://graphics.cs.williams.edu/courses/cs371/f14/reading/implicit.pdf\">http://graphics.cs.williams.edu/courses/cs371/f14/reading/implicit.pdf</a></p>\n<h2 id=\"submission\">Submission</h2>\n<ul>\n<li>Update <code>README.md</code> to contain a solid description of your project</li>\n<li>Publish your project to gh-pages. <code>npm run deploy</code>. It should now be visible at <a href=\"http://username.github.io/repo-name\">http://username.github.io/repo-name</a></li>\n<li>Create a <a href=\"https://help.github.com/articles/creating-a-pull-request/\">pull request</a> to this repository, and in the comment, include a link to your published project.</li>\n<li>Submit the link to your pull request on Canvas.</li>\n</ul>\n<h2 id=\"deploy\">Deploy</h2>\n<ul>\n<li><code>npm run build</code></li>\n<li>Add and commit all changes</li>\n<li><code>npm run deploy</code></li>\n<li>If you&#39;re having problems with assets not linking correctly, make sure you wrap you&#39;re filepaths in <code>require()</code>. This will make the bundler package and your static assets as well. So, instead of <code>loadTexture(&#39;./images/thing.bmp&#39;)</code>, do <code>loadTexture(require(&#39;./images/thing.bmp&#39;))</code>.</li>\n</ul>\n";
 
 /***/ },
-/* 249 */
+/* 248 */
 /***/ function(module, exports) {
 
 	module.exports = "<h1 id=\"biocrowds\">BioCrowds</h1>\n<p>Biocrowds is a crowd simulation algorithm based on the formation of veination patterns on leaves. It prevents agents from colliding with each other on their way to their goal points using a notion of &quot;personal space&quot;. Personal space is modelled with a space colonization algorithm. Markers (just points) are scattered throughout the simulation space, on the ground. At each simulation frame, each marker becomes &quot;owned&quot; by the agent closest to it (with some max distance representing an agent&#39;s perception). Agent velocity at the next frame is then computed using a sum of the displacement vectors to each of its markers. Because a marker can only be owned by one agent at a time, this technique prevents agents from colliding.</p>\n<h2 id=\"agent-representation-15-pts-\">Agent Representation (15 pts)</h2>\n<p>Create an agent class to hold properties used for simulating and drawing the agent. Some properties you may want to consider include the following:</p>\n<ul>\n<li>Position</li>\n<li>Velocity</li>\n<li>Goal</li>\n<li>Orientation</li>\n<li>Size</li>\n<li>Markers</li>\n</ul>\n<h2 id=\"grid-marker-representation-25-pts-\">Grid/Marker Representation (25 pts)</h2>\n<p>Markers should be scattered randomly across a uniform grid. You should implement an efficient way of determining the nearest agent to a given marker. Based on an marker&#39;s location, you should be able to get the nearest four grid cells and loop through all the agents contained in them.</p>\n<h2 id=\"setup-10-pts-\">Setup (10 pts)</h2>\n<ul>\n<li>Create a scene (standard, with camera controls) and scatter markers across the entire ground plane</li>\n<li>Spawn agents with specified goal points</li>\n</ul>\n<h2 id=\"per-frame-35-pts-\">Per Frame (35 pts)</h2>\n<ul>\n<li>Assign markers to the nearest agent within a given radius. Be sure that a marker is only assigned to a single, unique agent.</li>\n<li>Compute velocity for each agent</li>\n<li>New velocity is determined by summing contributions from all the markers the agent &quot;owns&quot;. Each marker contribution consists of the displacement vector between the agent and the marker multiplied by some (non-negative) weight. The weighting is based on<ul>\n<li>Similarity between the displacement vector and the vector to agent&#39;s goal (the more similar, the higher the weight. A dot product works well)</li>\n<li>Distance from agent (the further away, the less contribution)\nEach contribution is normalized by the total marker contributions (divide each contribution by sum total)<ul>\n<li>Clamp velocity to some maximum (you probably want to choose a max speed such that you agent will never move further than its marker radius)</li>\n</ul>\n</li>\n</ul>\n</li>\n<li>Move agents by their newly computed velocity * time step</li>\n<li>Draw a ground plane and cylinders to represent the agents.</li>\n<li>For a more thorough explanation, see <a href=\"http://www.inf.pucrs.br/~smusse/Animacao/2016/CrowdTalk.pdf\">HERE</a> and <a href=\"http://www.sciencedirect.com/science/article/pii/S0097849311001713\">HERE</a> and <a href=\"https://books.google.com/books?id=3Adh_2ZNGLAC&amp;pg=PA146&amp;lpg=PA146&amp;dq=biocrowds%20algorithm&amp;source=bl&amp;ots=zsM86iYTot&amp;sig=KQJU7_NagMK4rbpY0oYc3bwCh9o&amp;hl=en&amp;sa=X&amp;ved=0ahUKEwik9JfPnubSAhXIxVQKHUybCxUQ6AEILzAE#v=onepage&amp;q=biocrowds%20algorithm&amp;f=false\">HERE</a></li>\n</ul>\n<h2 id=\"two-scenarios\">Two scenarios</h2>\n<ul>\n<li>Create two different scenarios (initial agent placement, goals) to show off the collision avoidance. Try to pick something interesting! Classics include two opposing lines of agents with goals on opposite sides, or agents that spawn in a circle, which each agent&#39;s goal directly across.</li>\n<li>Provide some way to switch between scenarios</li>\n</ul>\n<h2 id=\"deploy-your-code-5-pts-\">Deploy your code! (5 pts)</h2>\n<ul>\n<li>Your demo should run on your gh-pages branch</li>\n</ul>\n<h2 id=\"extra-credit\">Extra credit</h2>\n<ul>\n<li>Add obstacles to your scene, such that agents avoid them</li>\n</ul>\n";
 
 /***/ },
-/* 250 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -26088,7 +26087,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var beautify = __webpack_require__(251);
+	var beautify = __webpack_require__(250);
 
 	module.exports = function pretty(str, options) {
 	  str = beautify.html(str, {
@@ -26131,7 +26130,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 251 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -26172,9 +26171,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	if (true) {
 	    // Add support for AMD ( https://github.com/amdjs/amdjs-api/wiki/AMD#defineamd-property- )
 	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [
+	        __webpack_require__(251),
 	        __webpack_require__(252),
-	        __webpack_require__(253),
-	        __webpack_require__(254)
+	        __webpack_require__(253)
 	    ], __WEBPACK_AMD_DEFINE_RESULT__ = function(js_beautify, css_beautify, html_beautify) {
 	        return get_beautify(js_beautify, css_beautify, html_beautify);
 	    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -26192,7 +26191,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 252 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jshint curly:true, eqeqeq:true, laxbreak:true, noempty:false */
@@ -28285,7 +28284,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 253 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jshint curly:true, eqeqeq:true, laxbreak:true, noempty:false */
@@ -28782,7 +28781,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 254 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jshint curly:true, eqeqeq:true, laxbreak:true, noempty:false */
@@ -29705,9 +29704,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    if (true) {
 	        // Add support for AMD ( https://github.com/amdjs/amdjs-api/wiki/AMD#defineamd-property- )
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, __webpack_require__(252), __webpack_require__(253)], __WEBPACK_AMD_DEFINE_RESULT__ = function(requireamd) {
-	            var js_beautify =  __webpack_require__(252);
-	            var css_beautify =  __webpack_require__(253);
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, __webpack_require__(251), __webpack_require__(252)], __WEBPACK_AMD_DEFINE_RESULT__ = function(requireamd) {
+	            var js_beautify =  __webpack_require__(251);
+	            var css_beautify =  __webpack_require__(252);
 
 	            return {
 	              html_beautify: function(html_source, options) {
