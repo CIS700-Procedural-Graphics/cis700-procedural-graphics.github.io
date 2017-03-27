@@ -68,7 +68,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _pretty = __webpack_require__(250);
+	var _pretty = __webpack_require__(251);
 
 	var _pretty2 = _interopRequireDefault(_pretty);
 
@@ -25705,6 +25705,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      } }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'proj7-biocrowds', component: function component() {
 	        return _react2.default.createElement(_MD2.default, { md: __webpack_require__(249) });
+	      } }),
+	    _react2.default.createElement(_reactRouter.Route, { path: 'proj8-substance', component: function component() {
+	        return _react2.default.createElement(_MD2.default, { md: __webpack_require__(250) });
 	      } })
 	  )
 	);
@@ -25941,6 +25944,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	                        { to: '/assignments/proj7-biocrowds' },
 	                        'Project 7: BioCrowds'
 	                      )
+	                    ),
+	                    _react2.default.createElement(
+	                      'li',
+	                      null,
+	                      _react2.default.createElement(
+	                        _reactRouter.Link,
+	                        { to: '/assignments/proj8-substance' },
+	                        'Project 8: Substance Designer'
+	                      )
 	                    )
 	                  )
 	                ),
@@ -26077,6 +26089,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 250 */
+/***/ function(module, exports) {
+
+	module.exports = "<h1 id=\"project-8-procedural-textures-with-substance-designer\">Project 8: Procedural Textures with Substance Designer</h1>\n<p>To the best of your ability, approximate your assigned reference image (number assigned at random!) using Substance Designer. </p>\n<p><img src=\"https://s-media-cache-ak0.pinimg.com/originals/3c/22/de/3c22de092089fa1fd93afdecd5dd0060.jpg\" alt=\"\"></p>\n<p><img src=\"http://media.istockphoto.com/photos/navy-blue-marble-picture-id499432462?k=6&amp;m=499432462&amp;s=170667a&amp;w=0&amp;h=Hpadqur0XPdT3DmeNYdoS6mgyjU5p3m25F-nf2ZHOPc%3D\" alt=\"\"></p>\n<p><img src=\"https://s-media-cache-ak0.pinimg.com/736x/7a/47/8c/7a478c4d7b24e18130ed151008744ea2.jpg\" alt=\"\"></p>\n<p><img src=\"https://s-media-cache-ak0.pinimg.com/736x/7a/47/8c/7a478c4d7b24e18130ed151008744ea2.jpg\" alt=\"\"></p>\n<p><img src=\"https://s-media-cache-ak0.pinimg.com/564x/c0/d1/9d/c0d19d77dd3bb1292cfc450dd70eac18.jpg\" alt=\"\"></p>\n<p><img src=\"https://thumbs.dreamstime.com/x/ball-pavement-tiles-2950819.jpg\" alt=\"\"></p>\n<p><img src=\"https://previews.123rf.com/images/pancaketom/pancaketom1102/pancaketom110200046/8832115-old-non-skid-metal-painted-diamond-plate-background-texture-Stock-Photo.jpg\" alt=\"\"></p>\n<p><img src=\"https://blog.etemetaphysical.com/wp-content/uploads/2015/03/oceanjasperblog06.jpg\" alt=\"\"></p>\n";
+
+/***/ },
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -26088,7 +26106,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var beautify = __webpack_require__(251);
+	var beautify = __webpack_require__(252);
 
 	module.exports = function pretty(str, options) {
 	  str = beautify.html(str, {
@@ -26131,7 +26149,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 251 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -26172,9 +26190,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	if (true) {
 	    // Add support for AMD ( https://github.com/amdjs/amdjs-api/wiki/AMD#defineamd-property- )
 	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [
-	        __webpack_require__(252),
 	        __webpack_require__(253),
-	        __webpack_require__(254)
+	        __webpack_require__(254),
+	        __webpack_require__(255)
 	    ], __WEBPACK_AMD_DEFINE_RESULT__ = function(js_beautify, css_beautify, html_beautify) {
 	        return get_beautify(js_beautify, css_beautify, html_beautify);
 	    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -26192,7 +26210,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 252 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jshint curly:true, eqeqeq:true, laxbreak:true, noempty:false */
@@ -28285,7 +28303,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 253 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jshint curly:true, eqeqeq:true, laxbreak:true, noempty:false */
@@ -28782,7 +28800,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 254 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*jshint curly:true, eqeqeq:true, laxbreak:true, noempty:false */
@@ -29705,9 +29723,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    if (true) {
 	        // Add support for AMD ( https://github.com/amdjs/amdjs-api/wiki/AMD#defineamd-property- )
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, __webpack_require__(252), __webpack_require__(253)], __WEBPACK_AMD_DEFINE_RESULT__ = function(requireamd) {
-	            var js_beautify =  __webpack_require__(252);
-	            var css_beautify =  __webpack_require__(253);
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, __webpack_require__(253), __webpack_require__(254)], __WEBPACK_AMD_DEFINE_RESULT__ = function(requireamd) {
+	            var js_beautify =  __webpack_require__(253);
+	            var css_beautify =  __webpack_require__(254);
 
 	            return {
 	              html_beautify: function(html_source, options) {

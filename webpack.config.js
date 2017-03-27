@@ -57,6 +57,7 @@ module.exports = {
       '/assignments/proj6-marchingcubes',
       '/assignments/proj6-raymarching',
       '/assignments/proj7-biocrowds',
+      '/assignments/proj8-substance',
       '/resources/javascript-basics'
     ], {}),
     new ExtractTextPlugin('style.css')
