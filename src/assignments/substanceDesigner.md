@@ -16,7 +16,7 @@ img {
 ![](http://media.istockphoto.com/photos/navy-blue-marble-picture-id499432462?k=6&m=499432462&s=170667a&w=0&h=Hpadqur0XPdT3DmeNYdoS6mgyjU5p3m25F-nf2ZHOPc%3D)
 
 ## 3
-![](https://s-media-cache-ak0.pinimg.com/736x/7a/47/8c/7a478c4d7b24e18130ed151008744ea2.jpg)
+![](http://pre10.deviantart.net/224d/th/pre/i/2014/303/8/a/turquoise_seamless_texture_by_jojo_ojoj-d84pf5c.jpg)
 
 ## 4
 ![](https://s-media-cache-ak0.pinimg.com/736x/7a/47/8c/7a478c4d7b24e18130ed151008744ea2.jpg)
