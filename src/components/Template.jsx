@@ -36,6 +36,7 @@ class Template extends Component {
                   <li><Link to="/assignments/proj6-raymarching">Project 6: Ray Marching</Link></li>
                   <li><Link to="/assignments/proj7-biocrowds">Project 7: BioCrowds</Link></li>
                   <li><Link to="/assignments/proj8-substance">Project 8: Substance Designer</Link></li>
+                  <li><Link to="/assignments/final-project">Final Project</Link></li>
                 </ul>
               </li>
               <li className="dropdown">

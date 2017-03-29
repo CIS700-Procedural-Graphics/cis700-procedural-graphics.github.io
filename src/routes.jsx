@@ -21,6 +21,7 @@ var routes = (
       <Route path="proj6-raymarching" component={() => (<MD md={require("../../hw/metaballs2/base/README.md")} />)} />
       <Route path="proj7-biocrowds" component={() => (<MD md={require("../../hw/biocrowds/base/README.md")} />)} />
       <Route path="proj8-substance" component={() => (<MD md={require("./assignments/substanceDesigner.md")} />)} />
+      <Route path="final-project" component={() => (<MD md={require("./assignments/finalProject.md")} />)} />
     </Route>
   </Router>
 )
