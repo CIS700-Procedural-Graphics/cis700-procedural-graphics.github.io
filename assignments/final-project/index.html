@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+  </head>
+  <body>
+    <div id="root">
+      <div>
+        <nav class="navbar navbar-inverse">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>   <span class="icon-bar"></span> </button>
+              <a class="navbar-brand" href="/">CIS700 Procedural Graphics</a> 
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li> <a href="/syllabus">Syllabus</a>  </li>
+                <li> <a href="/schedule">Schedule</a>  </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assignments  <span class="caret"></span>  </a> 
+                  <ul class="dropdown-menu">
+                    <li> <a href="/assignments/proj1-noise">Project 1: Noise</a>  </li>
+                    <li> <a href="/assignments/proj2-toolbox-functions">Project 2: Toolbox Functions</a>  </li>
+                    <li> <a href="/assignments/proj3-l-systems">Project 3: L-Systems</a>  </li>
+                    <li> <a href="/assignments/proj4-shape-grammar">Project 4: Shape Grammar</a>  </li>
+                    <li> <a href="/assignments/proj5-shaders">Project 5: Shaders</a>  </li>
+                    <li> <a href="/assignments/proj6-marchingcubes">Project 6: Marching Cubes</a>  </li>
+                    <li> <a href="/assignments/proj6-raymarching">Project 6: Ray Marching</a>  </li>
+                    <li> <a href="/assignments/proj7-biocrowds">Project 7: BioCrowds</a>  </li>
+                    <li> <a href="/assignments/proj8-substance">Project 8: Substance Designer</a>  </li>
+                    <li> <a href="/assignments/final-project">Final Project</a>  </li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources  <span class="caret"></span>  </a> 
+                  <ul class="dropdown-menu">
+                    <li> <a href="/resources/javascript-basics">Javascript Basics</a>  </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main class="container">
+          <div class="markdown-page">
+            <h1 id="cis700-procedural-graphics-final-project">CIS700 Procedural Graphics: Final Project</h1>
+            <p>Time to show off your new bag of procedural tricks by creating one polished final project. For this assignment you will have four weeks to create and document a portfolio piece that demonstrates your mastery of procedural thinking and implementation.
+              You may work in groups of up to three (working alone is fine too). You may use any language / platform you choose for this assignment (given our approval if it’s not JavaScript/WebGL or C++/OpenGL).</p>
+            <p>As usual with this class, we want to encourage you to take this opportunity to explore and experiment. To get you started, however, we’ve provided a few open-ended prompts below. Interesting and complex visuals are the goal in all of these
+              prompts, but they encourage focus on different aspects of proceduralism.</p>
+            <h2 id="prompts-">Prompts:</h2>
+            <ul>
+              <li>
+                <h3 id="a-classic-4k-demo">A classic 4k demo</h3>
+                <ul>
+                  <li>In the spirit of the demo scene, create an animation that fits into a 4k executable that runs in real-time. Feel free to take inspiration from the many existing demos. Focus on efficiency and elegance in your implementation.</li>
+                  <li>Examples:
+                    <a href="https://www.youtube.com/watch?v=RCh3Q08HMfs&amp;list=PLA5E2FF8E143DA58C">cdak by Quite &amp; orange</a> 
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <h3 id="a-forgery">A forgery</h3>
+                <ul>
+                  <li>Taking inspiration from a particular natural phenomenon or distinctive set of visuals, implement a detailed, procedural recreation of that aesthetic. This includes modeling, texturing and object placement within your scene. Does not
+                    need to be real-time. Focus on detail and visual accuracy in your implementation.</li>
+                  <li>Examples:
+                    <ul>
+                      <li>
+                        <a href="https://www.shadertoy.com/view/ld3Gz2">Snail</a>,
+                        <a href="https://www.shadertoy.com/view/ldlcRf">Journey</a>, Big Hero 6 Wormhole:
+                        <a href="http://2.bp.blogspot.com/-R-6AN2cWjwg/VTyIzIQSQfI/AAAAAAAABLA/GC0yzzz4wHw/s1600/big-hero-6-disneyscreencaps.com-10092.jpg">Image 1</a>  ,
+                        <a href="https://i.stack.imgur.com/a9RGL.jpg">Image 2</a> 
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <h3 id="a-game-level">A game level</h3>
+                <ul>
+                  <li>Like generations of game makers before us, create a game which generates an navigable environment (eg. a roguelike dungeon, platforms) and some sort of goal or conflict (eg. enemy agents to avoid or items to collect). Must run in real-time.
+                    Aim to create an experience that will challenge players and vary noticeably in different playthroughs, whether that means complex dungeon generation, careful resource management or a sophisticated AI model. Focus on designing a system
+                    that will generate complex challenges and goals.</li>
+                  <li>Examples: Spore, Dwarf Fortress, Minecraft, Rogue</li>
+                </ul>
+              </li>
+              <li>
+                <h3 id="an-animated-environment-music-visualizer">An animated environment / music visualizer</h3>
+                <ul>
+                  <li>Create an environment full of interactive procedural animation. The goal of this project is to create an environment that feels responsive and alive. Whether or not animations are musically-driven, sound should be an important component.
+                    Focus on user interactions, motion design and experimental interfaces.</li>
+                  <li>Examples:
+                    <a href="https://www.youtube.com/watch?v=gBTTMNFXHTk">Panoramical</a>,
+                    <a href="https://www.youtube.com/watch?v=aE37l6RvF-c">Bound</a> 
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <h3 id="own-proposal">Own proposal</h3>
+                <ul>
+                  <li>You are of course <strong>welcome to propose your own topic</strong> . Regardless of what you choose, you and your team must research your topic and relevant techniques and come up with a detailed plan of execution. You will meet with
+                    some subset of the procedural staff before starting implementation for approval. </li>
+                </ul>
+              </li>
+            </ul>
+            <p><strong>Final grading will be individual</strong>  and will be based on both the final product and how well you were able to achieve your intended effect according to your execution plan. Plans change of course, and we don’t expect you to follow
+              your execution plan to a T, but if your final project looks pretty good, but you cut corners and only did 30% of what you outlined in your design doc, you will be penalized.</p>
+            <p>But overall, have fun! This is your opportunity to work on whatever procedural project inspires you. The best way to ensure a good result is to pick something you’re passionate about. :)</p>
+            <h2 id="timeline">Timeline</h2>
+            <ul>
+              <li>4/11 Design doc due / Have met with procedural staff</li>
+              <li>4/18 Milestone 1 (short write-up + demo)</li>
+              <li>4/25 Milestone 2 (short write-up + demo)</li>
+              <li>5/3 Final presentations (3-5 pm, Siglab), final reports due</li>
+            </ul>
+            <h2 id="design-doc">Design Doc</h2>
+            <p>Your design doc should follow the following template. Note, each section can be pretty short, but cover them all! This will serve as valuable documentation when showing this project off in the future AND doing a good job will make it much
+              easier for you to succeed, so please take this seriously.</p>
+            <h3 id="design-doc-template-">Design Doc Template:</h3>
+            <ul>
+              <li>
+                <h4 id="introduction">Introduction</h4>
+                <ul>
+                  <li>What motivates this project?</li>
+                </ul>
+              </li>
+              <li>
+                <h4 id="goal">Goal</h4>
+                <ul>
+                  <li>What do you intend to achieve with this project?</li>
+                </ul>
+              </li>
+              <li>
+                <h4 id="inspiration-reference-">Inspiration/reference:</h4>
+                <ul>
+                  <li>Attach some materials, visual or otherwise you intend as reference</li>
+                </ul>
+              </li>
+              <li>
+                <h4 id="specification-">Specification:</h4>
+                <ul>
+                  <li>Outline the main features of your project</li>
+                </ul>
+              </li>
+              <li>
+                <h4 id="techniques-">Techniques:</h4>
+                <ul>
+                  <li>What are the main technical/algorithmic tools you’ll be using? Give an overview, citing specific papers/articles</li>
+                </ul>
+              </li>
+              <li>
+                <h4 id="design-">Design:</h4>
+                <ul>
+                  <li>How will your program fit together? Make a simple free-body diagram illustrating the pieces.</li>
+                </ul>
+              </li>
+              <li>
+                <h4 id="timeline-">Timeline:</h4>
+                <ul>
+                  <li>Create a week-by-week set of milestones for each person in your group.</li>
+                </ul>
+              </li>
+            </ul>
+            <p>Along with your final project demo, you will submit a final report, in which you will update correct your original design doc as needed and add a few post-mortem items.</p>
+            <h2 id="milestones">Milestones</h2>
+            <p>To keep you honest / on-track, we will be checking on your progress at weekly intervals, according to milestones you’ll define at the outset (pending our approval). For each of the two milestones prior to the final submission, you will submit
+              a short write up explaining whether or not you individually achieved your goals (specifying the files where the work happened), along with a link to a demo / images. These don’t have to be super polished -- we just want to see that you’re
+              getting things done.</p>
+            <p>Example:</p>
+            <p>“Milestone 1: Adam: Made some procedural terrain code in src/terrain.js. Implemented 3D simplex noise to do it. Also applied coloring via custom shader based on this cool paper X (see src/shaders/dirt.glsl). IMAGE</p>
+            <p>Austin: I managed to set up my voronoi diagram shader (see src/shaders/voronoi.glsl). Experimented with different scattering techniques. It’s working with the euclidean distance metric. I’m using it in src/main.js to color stones. IMAGE</p>
+            <p>Rachel: I tried really hard to make my toon shader work (src/shaders/toon.glsl), but I still have a bug! T_T BUGGY IMAGE. DEMO LINK”</p>
+            <h2 id="final-report">Final Report</h2>
+            <p>In addition to your demo, you will create a final report documenting your project overall. This document should be clear enough to explain the value and details of your project to a random computer graphics person with no knowledge of this
+              class.</p>
+            <h3 id="final-report-template-">Final Report Template:</h3>
+            <ul>
+              <li>
+                <h4 id="updated-design-doc-">Updated design doc:</h4>
+                <ul>
+                  <li>All the sections of your original design doc, corrected if necessary</li>
+                </ul>
+              </li>
+              <li>
+                <h4 id="results-">Results:</h4>
+                <ul>
+                  <li>Provide images of your finished project</li>
+                </ul>
+              </li>
+              <li>
+                <h4 id="evaluation-this-is-a-big-one-">Evaluation (this is a big one!):</h4>
+                <ul>
+                  <li>How well did you do? What parameters did you tune along the way? Include some WIP shots that compare intermediate results to your final. Explain why you made the decisions you did.</li>
+                </ul>
+              </li>
+              <li>
+                <h4 id="future-work-">Future work:</h4>
+                <ul>
+                  <li>Given more time, what would you add/improve</li>
+                </ul>
+              </li>
+              <li>
+                <h4 id="acknowledgements-">Acknowledgements:</h4>
+                <ul>
+                  <li>Cite <em>EVERYTHING</em> . Implemented a paper? Used some royalty-free music? Talked to classmates / a professor in a way that influenced your project? Attribute everything!</li>
+                </ul>
+              </li>
+            </ul>
+            <h2 id="logistics">Logistics</h2>
+            <p>Like every prior project, your code will be submitted via github. Fork the empty final project repo and start your code base from there. Take this as an opportunity to practice using git properly in a team setting if you’re a new user. For
+              each weekly submission, provide a link to your pull request. Your repo will contain all the code and documentation associated with your project. The readme for your repo will eventually be your final report. At the top level, include a folder
+              called “documentation”, where you’ll put your design doc and milestone write-ups.</p>
+            <p>Don’t wait to merge your code! Seriously, there be dragons. Try to have a working version including all your code so that compatibility and merge issues don’t sneak up on you near the end.</p>
+            <h2 id="grading">Grading</h2>
+            <ul>
+              <li>15% Design Doc (graded as a group)</li>
+              <li>15% Milestone 1 (graded as a group)</li>
+              <li>15% Milestone 2 (graded as a group)</li>
+              <li>55% Final demo + report (graded individually)</li>
+            </ul>
+            <p>NOTE: We’ve been pretty lax about our late policy throughout the semester, but our margins on the final project are tight, therefore late submissions will NOT be accepted. If you have a significant reason for being unable to complete your
+              goals, talk to us, and we’ll discuss getting you an incomplete and figure out an adjusted work plan with your group.</p>
+          </div>
+        </main>
+      </div>
+    </div>
+    <body>
+      <footer>
+        <script>
+          (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+              (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+              m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+          })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+          ga('create', 'UA-91822551-1', 'auto');
+          ga('send', 'pageview');
+        </script>
+      </footer>
+</html>
