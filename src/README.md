@@ -31,7 +31,7 @@
 ### Procedural Wing
 
 <div class='project'><div class='name'>Brian Tong</div><iframe src='//www.giphy.com/embed/l0IyiNSjj8jsyfvna'></iframe><div class='links'><a href='https://github.com/iambrian/Project-2-Toolbox-Functions'>Github</a> | <a href='https://iambrian.github.io/Project-2-Toolbox-Functions/'>Demo</a></div></div>
-<div class='project'><div class='name'>Mariano Merchante</div><iframe src='http://www.giphy.com/embed/l4FGzJbw3RrvuP11m'></iframe><div class='links'><a href='https://github.com/mmerchante/angels-and-men'>Github</a> | <a href='https://mmerchante.github.io/angels-and-men/'>Demo</a></div></div>
+<div class='project'><div class='name'>Mariano Merchante</div><iframe src='//www.giphy.com/embed/l4FGzJbw3RrvuP11m'></iframe><div class='links'><a href='https://github.com/mmerchante/angels-and-men'>Github</a> | <a href='https://mmerchante.github.io/angels-and-men/'>Demo</a></div></div>
 
 ### L-Systems
 
